@@ -1,0 +1,107 @@
+
+const tableColumns = [
+  {
+    dataField: "Charges",
+    text: "Charges",
+	headerStyle: (colum, colIndex) => {
+          return { width: '100px', textAlign: 'Left' };
+        },
+	columns: [
+	  {
+		dataField: 'Charge Type',
+		text: 'Charge',
+		className: 'ChargeType',
+		style: {
+		  fontWeight: 'bolder',
+		},
+	  },
+	],	
+  },
+  {
+	dataField: 'UpdateDate',
+	text: "Update Date",
+	columns: [
+			  {
+				dataField: "Update0",
+				text: "01/01/2018"
+			  },
+			  {
+				dataField: "Update1",
+				text: "01/01/2017"
+			  },
+			  {
+				dataField: "Update2",
+				text: "01/01/2016"
+			  },
+			  {
+				dataField: "Update3",
+				text: "01/01/2015"
+			  }
+			 ] 
+  }
+];
+
+
+
+const ExpandableRowsTable = () => {
+  
+	  const selectRow = {
+		mode: "checkbox",
+		clickToSelect: true,
+		hideSelectColumn: true,
+		 onSelect: (row, isSelect, rowIndex, e) => {
+		// ...
+	  }
+
+	  };
+
+	  const MyExportCSV = props => {
+		const handleClick = () => {
+		  props.onExport();
+		};
+		return (
+		  <div>
+			<button className="btn btn-secondary mt-2" onClick={handleClick}>
+			  Export
+			</button>
+		  </div>
+		);
+	  };
+
+	  return (
+		<Card>
+		  <ToolkitProvider
+			keyField="Charge"
+			data={data}
+			columns={tableColumns}
+			exportCSV
+		  >
+			{props => (
+			  <div>
+				
+				<div className="float-right pull-right">
+					<MyExportCSV {...props.csvProps} />
+				</div>
+
+				<CardBody>
+				  <BootstrapTable
+					{...props.baseProps}
+					bootstrap4
+					bordered={false}
+					keyField="Charge"
+					data={data}
+					columns={tableColumns}
+					selectRow={selectRow}
+					
+					pagination={paginationFactory({
+					  sizePerPage: 10,
+					  sizePerPageList: [5, 10, 25, 50]
+					})}
+				  />
+				</CardBody>
+			  </div>
+			)}
+		  </ToolkitProvider>
+		</Card>
+	  );
+};
