@@ -96,10 +96,11 @@ class TabsWithTextLabel extends React.Component {
   }
 }
 
+//
 const Pension = () => (
 	<div>
-         <ClientCont className="p-0 m-0"/>	
-		<TabsWithTextLabel  />
+        <ClientCont className="p-0 m-0"/>	
+			<TabsWithTextLabel  />
 	</div>
 );
 

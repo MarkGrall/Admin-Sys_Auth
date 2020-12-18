@@ -5,14 +5,8 @@ import {
   Card,
   CardBody,
   CardHeader,
-  CardTitle,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  UncontrolledDropdown
+  CardTitle
 } from "reactstrap";
-
-import { MoreHorizontal } from "react-feather";
 
 const jQuery = require("jquery");
 const $ = jQuery;

@@ -7,7 +7,7 @@ import { MoreHorizontal } from "react-feather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt} from "@fortawesome/free-solid-svg-icons";
 
-import { Document, Page } from 'react-pdf';
+
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";

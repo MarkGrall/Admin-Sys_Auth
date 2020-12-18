@@ -95,7 +95,7 @@ const SinglePlan = ( {planSummary,i} ) => (
   </Card>
 );
 
-
+//<Col cuscol2={5}>
 class Plans extends React.Component {
   render() {
     return <Container fluid className="p-0">
@@ -104,7 +104,7 @@ class Plans extends React.Component {
 	{		
 		PlanSummaryData.map((planSummary, index) => {
 		return( 
-		<Col cuscol2={5}>
+		<Col >
 		<Card className="card-margin">
 			<CardHeader>
 			  <div className="card-actions float-right">

@@ -6,14 +6,14 @@ import DatePickerCalendar from './DatePickerCalendar'
 
 const getInstanceCount = () => {
   if (typeof window === 'object') {
-    if (window._reactstrapDatePickerInstance == undefined) {
+    if (window._reactstrapDatePickerInstance === undefined) {
       window._reactstrapDatePickerInstance= 0
     }
     const next= window._reactstrapDatePickerInstance+1
     window._reactstrapDatePickerInstance= next
     return next
   } else if (typeof process === 'object') {
-    if (process._reactstrapDatePickerInstance == undefined) {
+    if (process._reactstrapDatePickerInstance === undefined) {
       process._reactstrapDatePickerInstance= 0
     }
     const next= process._reactstrapDatePickerInstance+1
@@ -61,9 +61,9 @@ class DatePicker extends React.Component {
 
   makeIdSuffix() {
     // Try <id> or <name> props to determine elements' id suffix
-    if (this.props.id!=undefined && this.props.id!='')
+    if (this.props.id!==undefined && this.props.id!=='')
       return this.props.id
-    if (this.props.name!=undefined && this.props.name!='')
+    if (this.props.name!==undefined && this.props.name!=='')
       return this.props.name
     // If none was passed, use global vars
     const iCount= getInstanceCount()
@@ -397,7 +397,7 @@ class DatePicker extends React.Component {
     
     
     let controlId= `rdp-form-control-${this.idSuffix}`
-    if (this.props.customControl!=undefined && this.props.customControl.props.id) {
+    if (this.props.customControl!==undefined && this.props.customControl.props.id) {
       controlId= this.props.customControl.props.id
     }
 
@@ -470,7 +470,7 @@ class DatePicker extends React.Component {
         <input ref       = {this.hiddenInputRef}
                type      = "hidden"
                className = 'rdp-hidden'
-               id        = {this.props.id!=undefined ? this.props.id : `rdp-hidden-${this.idSuffix}`} 
+               id        = {this.props.id!==undefined ? this.props.id : `rdp-hidden-${this.idSuffix}`} 
                name      = {this.props.name} 
                value     = {this.state.value || ''} 
                data-formattedvalue = {this.state.value ? this.state.inputValue : ''}

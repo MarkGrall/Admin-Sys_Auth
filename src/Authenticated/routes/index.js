@@ -57,7 +57,7 @@ const SystemCentre_ErrorRectification = async(() => import("../pages/SystemCentr
 const ClientSearch = async(() => import("../pages/ManageClients/ClientSearch"));
 // Routes
 
-const Forms = async(() => import("../pages/ManageClients/Modal"));
+//const Forms = async(() => import("../pages/ManageClients/Modal"));
 
 const Profile = async(() => import("../pages/Profile/index"));
 const LoginSecurity = async(() => import("../pages/Profile/LoginSecurity"));
@@ -152,11 +152,6 @@ const ClientSearchRoutes = {
       path: "/ManageClient/ClientSearch",
       name: "Client Search",
       component: ClientSearch
-    },
-	{
-      path: "/ManageClient/Forms",
-      name: "Forms",
-      component: Forms
     }
   ]
 };
@@ -257,6 +252,10 @@ const ProductCentreRoutes = {
   ]
 };
 
+export const landing = [landingRoutes];
+//export default landing ;
+
+
 // plan specific routes
 export const plans = [
   plansRoutes,
@@ -269,8 +268,6 @@ export const plans = [
   ChatRoutes
   
 ];
-
-export const landing = [landingRoutes];
 
 
 

@@ -4,7 +4,7 @@ import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
-import { Document, Page } from 'react-pdf';
+
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";

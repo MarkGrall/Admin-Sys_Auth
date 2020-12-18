@@ -5,7 +5,6 @@ import { NavLink, withRouter } from "react-router-dom";
 import { Badge, Collapse } from "reactstrap";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
-import { Box } from "react-feather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircle,faInfinity } from "@fortawesome/free-solid-svg-icons";
 
@@ -244,7 +243,6 @@ const UserPicture = withAuth(class ProfilePage extends React.Component {
   render() {
     
 	const FnImage = (props) => {
-	const { email} = props;
 		switch(props.email) {
 			case 'mark.grall@gmail.com':
 			  return <img src={avatarMG} className="rounded-circle mr-1" alt={props.email} width="40" height="40" /> ;

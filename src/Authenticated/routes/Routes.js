@@ -3,10 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 
-  //auth as authRoutes,
- // signIn as signInRoutes,
-  //signUp as signUpRoutes,
-  //UserRoutes as UserRoutes 
   
 import {
   landing as landingRoutes,

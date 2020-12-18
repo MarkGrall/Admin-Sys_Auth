@@ -6,8 +6,6 @@ import classnames from "classnames";
 import Table from "./Table/index";
 import DataParameters from "./DataParameters/index";
 
-let ProductData_Updated;
-
 class TabsWithTextLabel extends React.Component {
   constructor(props) {
     super(props);
@@ -32,9 +30,8 @@ class TabsWithTextLabel extends React.Component {
 	}
 
   render() {
-	const { name, className, TabName_1,TabName_2 } = this.props;
-    return (
-	 
+	const { className, TabName_1,TabName_2 } = this.props;
+    return ( 
       <div className={"tab " + className}>
 		<Nav tabs>
           <NavItem>

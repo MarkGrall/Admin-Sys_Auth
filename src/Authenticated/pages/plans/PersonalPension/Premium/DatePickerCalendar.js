@@ -7,11 +7,6 @@ const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 class DatePickerCalendar extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
-
-
   handleClick(e) {
     const day = e.currentTarget.getAttribute('data-day');
     const newSelectedDate = this.setTimeToNoon(new Date(this.props.displayDate));
@@ -60,8 +55,8 @@ class DatePickerCalendar extends React.Component {
     const showWeeks = this.props.showWeeks;
 
     let monthLength = daysInMonth[month];
-    if (month == 1) {
-      if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+    if (month === 1) {
+      if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
         monthLength = 29;
       }
     }
