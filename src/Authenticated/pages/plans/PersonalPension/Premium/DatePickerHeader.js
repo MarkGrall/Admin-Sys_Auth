@@ -4,16 +4,12 @@ import PropTypes from 'prop-types'
 
 class DatePickerHeader extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   displayingMinMonth() {
     if (!this.props.minDate) return false;
 
     const displayDate = new Date(this.props.displayDate);
     const minDate = new Date(this.props.minDate);
-    return minDate.getFullYear() == displayDate.getFullYear() && minDate.getMonth() == displayDate.getMonth();
+    return minDate.getFullYear() === displayDate.getFullYear() && minDate.getMonth() === displayDate.getMonth();
   }
 
   displayingMaxMonth() {
@@ -21,7 +17,7 @@ class DatePickerHeader extends React.Component {
 
     const displayDate = new Date(this.props.displayDate);
     const maxDate = new Date(this.props.maxDate);
-    return maxDate.getFullYear() == displayDate.getFullYear() && maxDate.getMonth() == displayDate.getMonth();
+    return maxDate.getFullYear() === displayDate.getFullYear() && maxDate.getMonth() === displayDate.getMonth();
   }
 
   handleClickPrevious() {

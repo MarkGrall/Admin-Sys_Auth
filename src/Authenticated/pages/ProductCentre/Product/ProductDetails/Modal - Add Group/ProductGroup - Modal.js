@@ -1,19 +1,9 @@
 import React, { useState } from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table, Row, Col, Form, FormGroup,
-Button, Modal, ModalBody, ModalFooter, ModalHeader, CustomInput, Label,
-  ListGroup, ListGroupItem,  DropdownToggle, DropdownMenu, UncontrolledDropdown
-} from "reactstrap";
+import { Card, CardBody, Col, Form, FormGroup,Button, Modal, ModalBody, ModalFooter, ModalHeader, CustomInput, Label } from "reactstrap";
 
 import { Form as FinalForm, Field } from 'react-final-form'
-
-import BootstrapTable from "react-bootstrap-table-next";
-import ToolkitProvider from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-
-import { MinusCircle, PlusCircle, Edit2, HelpCircle, Trash } from "react-feather";
 import Select from "react-select";
-
-import Info_Bullet from "../../../../../components/pages/InfoBullet/index";
+import InfoBullet from "../../../../../components/pages/InfoBullet/index";
 
 const Condition = ({ when, is, children }) => (
   <Field name={when} subscription={{ value: true }}>
@@ -25,7 +15,7 @@ const onSubmit = async values => {
   await sleep(300)
   window.alert(JSON.stringify(values, 0, 2))
 }
-const Info_ClonedProduct = [
+const InfoClonedProduct = [
   {
     type: "Bullet",
     description: "This will bring in the cloned products parameters as a starting point. Note the Cloned product will remain unaffected.",
@@ -39,7 +29,7 @@ const Info_ClonedProduct = [
     ];
 
 
-const CloneProduct_Choice = () => (
+const CloneProductChoice = () => (
 
  <Form className="mb-4 "> 
 	<FormGroup row>
@@ -56,8 +46,7 @@ const CloneProduct_Choice = () => (
 						type="select"
 						component="input"
 						id="PaymentType_Holiday"
-						className="mb-2"
-						className="react-select-container"
+						className="mb-2 react-select-container"
 						classNamePrefix="react-select"
 
 					>
@@ -69,14 +58,14 @@ const CloneProduct_Choice = () => (
 		   )}
 		</Field>
 	  </Col>	 
-	  <Info_Bullet 
-		InfoDesc = {Info_ClonedProduct}
+	  <InfoBullet 
+		InfoDesc={InfoClonedProduct}
 		header = "Select the product you which to clone."  
 	   />
 	</FormGroup>
  </Form>
 );
-class CloneProduct_Product extends React.Component {
+class CloneProductProduct extends React.Component {
  constructor(props) {
     super(props)
     this.state= {
@@ -88,11 +77,6 @@ class CloneProduct_Product extends React.Component {
       value: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
       formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
     })
-  }
-  componentDidUpdate() {
-    // Access ISO String and formatted values from the DOM.
-    var hiddenInputElement = document.getElementById("example-datepicker");
-    
   }
   render() {
     return (
@@ -120,10 +104,10 @@ const CloneProduct = () => (
 
 	  <Card>
 		<CardBody>
-		  <CloneProduct_Choice/>
+		  <CloneProductChoice/>
 			  <Condition when="CloneProduct_Choice_Field" is="Yes" >
 				<div>
-					<CloneProduct_Product/>
+					<CloneProductProduct/>
 				</div>
 			  </Condition>	
 		</CardBody>

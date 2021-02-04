@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Button,ButtonGroup, Card, CardBody, CardHeader, CardTitle, Container,Form,FormGroup, Input, Label, Tooltip,
-  CustomInput,DropdownItem, DropdownMenu, DropdownToggle,Row,UncontrolledButtonDropdown, Modal, ModalHeader, ModalBody, ModalFooter
+import {Button,ButtonGroup, Card, CardBody, CardHeader, CardTitle, Container,Form, Label, Tooltip,
+  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledButtonDropdown, Modal, ModalHeader, ModalBody, ModalFooter
   } from "reactstrap";
 
 import BootstrapTable  from "react-bootstrap-table-next";
@@ -9,20 +9,10 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 
 import filterFactory, { textFilter, selectFilter }  from 'react-bootstrap-table2-filter';
 
-import { Activity, Edit2, MinusCircle, PlusCircle } from "react-feather";
+import { MinusCircle, PlusCircle } from "react-feather";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine, faStar, faFilePdf } from "@fortawesome/free-solid-svg-icons";
-import { faSmile } from "@fortawesome/free-regular-svg-icons";
-
-import { Form as FinalForm, Field } from 'react-final-form'
-import jQuery from "jquery";
-import PropTypes from 'prop-types';
-import FundModals from "./FundPricesModal";
-
-const $ = jQuery;
-window.jQuery = jQuery;
-
 
 const selectOptions = {
   1: "1",
@@ -339,11 +329,7 @@ const Policies = [
   }
 ]
 
-const Form1_Filter = () => {
-
-    const handleClick = (x) => {
-     DropdownToggle.value = (x)
-    };
+const form1_filter = () => {
 return (
 <Form>
 	<div className="mb-3">
@@ -396,33 +382,6 @@ const sizes = [
   }
 ];
 
-function Modal_Fund_Function()
-{
-return(
-<Form>
-	  <Modal
-		isOpen={true}
-		size="lg"
-	  >
-		<ModalHeader>
-		  Emerging Market Equity Income Fund
-		</ModalHeader>
-		<ModalBody className="text-center m-3">
-		  <p className="mb-0">
-			Use Bootstrap’s JavaScript modal plugin to add dialogs to
-			your site for lightboxes, user notifications, or completely
-			custom content.
-		  </p>
-		</ModalBody>
-		<ModalFooter>
-		  <Button color="primary">
-			Close
-		  </Button>{" "}
-		</ModalFooter>
-	  </Modal>
-</Form>
-)	
-}
 const Modal_Fund = () => {
 return(
 <Form>
@@ -450,54 +409,6 @@ return(
 )
 };
 
-const rowEvents = {
-  onClick: (e, row, rowIndex) => {
-     alert(`You clicked row id: ${row.id}, row index: ${rowIndex}`);
-	  
-  }
-};
-
-const selectRow = {
-  onClick: (e, row, rowIndex, FundID) => {
-     alert(`You clicked row id: ${row.id}, ${FundID} row index: ${rowIndex}`);
-	  
-  }
-};
-
-const selectRowProp3 = {
-    mode: 'checkbox',
-    hideSelectColumn: true,
-    bgColor: function (row, isSelect) {
-        if (isSelect) {
-            alert( 'yes' )
-            const { id } = { row };
-      
-            if (id < 2) return 'blue';
-            else if (id < 4) return 'red';
-            else return 'yellow';
-        }
-        return null;
-    }
-};
-
-function onRowSelect4(row, isSelected, isSelect, e) {
-    let rowStr = '';
-    for (const prop in row) {
-        rowStr += prop + ': "' + row[prop] + '"';
-    }
-    console.log(e);
-    rowStr = row['FundID']
-    alert(`is selected: ${rowStr}`)
-    // alert(`is selected: ${isSelected}, ${isSelect}, ${rowStr}`);
-}
-
-const selectRowProp2 = {
-    mode: 'checkbox',
-    bgColor: "pink", // you should give a bgcolor, otherwise, you can't regonize which row has been selected
-    hideSelectColumn: true,  // enable hide selection column.
-    clickToSelect: true  // you should enable clickToSelect, otherwise, you can't select column.
-};
-
 function onRowSelect(row,  isSelected, isSelect, e) {
     let rowStr = '';
     rowStr = row['FundID'] 
@@ -520,30 +431,7 @@ class ExpandableRowsTable extends React.Component {
   }
 
   render() { 
-   const expandRow = {
-    renderer: row => (
-      <div>
-        
-        <p>
-          You can render anything here, also you can add additional data on every row object.
-        </p>
-      </div>
-    ),
-    showExpandColumn: true,
-    expandHeaderColumnRenderer: ({ isAnyExpands }) =>
-      isAnyExpands ? (
-        <MinusCircle width={16} height={16} />
-      ) : (
-        <PlusCircle width={16} height={16} />
-      ),
-    expandColumnRenderer: ({ expanded }) =>
-      expanded ? (
-        <MinusCircle width={16} height={16} />
-      ) : (
-        <PlusCircle width={16} height={16} />
-      )
-  }
-  
+
    const MyExportCSV = props => {
      const handleClick = () => {
       props.onExport();
@@ -572,7 +460,7 @@ class ExpandableRowsTable extends React.Component {
           <div>
             <CardBody>
 			  <div className="float-left">
-				 <Form1_Filter/>
+				 <form1_filter/>
 			  </div>
 			  <div className="float-right">
 				 <MyExportCSV {...props.csvProps} />

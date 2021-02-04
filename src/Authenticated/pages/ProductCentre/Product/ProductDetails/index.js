@@ -1,10 +1,5 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col, CardHeader, CardTitle, Table, Nav, NavItem, NavLink,TabContent,TabPane } from "reactstrap";
-
-import { MoreHorizontal } from "react-feather";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt} from "@fortawesome/free-solid-svg-icons";
+import { Card,CardBody, Container, Col, CardHeader, CardTitle, Table } from "reactstrap";
 
 import ModelIcon from "./Details - ModalIcon";
 

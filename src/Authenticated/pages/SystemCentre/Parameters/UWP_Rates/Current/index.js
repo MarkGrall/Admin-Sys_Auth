@@ -1,21 +1,15 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown  ,FormGroup,
-  Input, Label
+import React  from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container
   } from "reactstrap";
-import { MoreHorizontal } from "react-feather";
+
 
 
 import BootstrapTable  from "react-bootstrap-table-next";
 
-import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
+import ToolkitProvider  from "react-bootstrap-table2-toolkit";
+import filterFactory, { textFilter   } from 'react-bootstrap-table2-filter';
 
-import paginationFactory from "react-bootstrap-table2-paginator";
 
-import {  MinusCircle, PlusCircle } from "react-feather";
-
-const B_Label="UWP Rate"
 let nameFilter;
 let DefaultSelected = "4";
 const tableColumns = [
@@ -322,10 +316,7 @@ const handleClick_Update = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-	}
+class ExpandableRowsTable2ndTable extends React.Component {
 	  
 	componentDidMount() {
 		handleClick_Update (DefaultSelected) 
@@ -336,10 +327,6 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 		const MyExportCSV = props => {
 			const handleClick = () => {
 			  props.onExport();
-			};
-			const handleClick_1 = (TableNumber) => {
-			 // alert(TableNumber)
-			  nameFilter(TableNumber);
 			};
 			return (
 			  <div>
@@ -399,7 +386,6 @@ class CurrentTable extends React.Component{
 	//{this.props.data.value}
 	// {this.props.TableType_Label} Table - Rate Type:{this.props.opt} - Table Number: 
     render(){
-		const {data} = this.state;
         return(
 			<Container fluid className="p-0">
 				<Card className="card-margin">
@@ -410,7 +396,7 @@ class CurrentTable extends React.Component{
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
-					  <ExpandableRowsTable_2ndTable parentCallback = {this.handleCallback} />	
+					  <ExpandableRowsTable2ndTable parentCallback = {this.handleCallback} />	
 					</CardBody>
 				</Card>
 			  </Container>

@@ -1,7 +1,5 @@
 import React from "react";
-import { Col, Card, CardBody,CardHeader,CardTitle,Container, Media, Row } from "reactstrap";
-
-import { BarChart2, Activity, DollarSign, ShoppingBag } from "react-feather";
+import { Col, Card, CardBody,Container, Media, Row } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

@@ -1,18 +1,12 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
+import React from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container, DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
-
-
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter   } from 'react-bootstrap-table2-filter';
 import cellEditFactory from 'react-bootstrap-table2-editor';
-
-import {  MinusCircle, PlusCircle } from "react-feather";
 
 let nameFilter;
 
@@ -21,17 +15,20 @@ const tableColumns = [
 	  {
 		dataField: "Gender",
 		text: "Gender",
-		sort: true			
+		sort: true,
+		editable:true
 	  },
 	  {
 		dataField: "Age",
 		text: "Age",
-		sort: true	
+		sort: true,
+		editable:true		
 	  },
 	  {
 		dataField: "Rate",
 		text: "Rate",
-		sort: true	
+		sort: true,
+		editable:true		
 	  },
 	  {
 			dataField: 'TableID',
@@ -1684,15 +1681,17 @@ ID: "324"}
 
 
 
+const { ExportCSVButton } = CSVExport;
+
 const handleClick = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
+class ExpandableRowsTable2ndTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumber_State: this.props.Row.TableNumber
 			}
 	}
 	  
@@ -1703,45 +1702,22 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 	componentDidUpdate() {
 		//this.setState({TableNumber_State: this.props.TableNumber_Prop})
 		//alert( 'State is ' + this.state.TableNumber_State  +  'Prop is ' + this.props.TableNumber_Prop );
-		//handleClick (this.props.TableNumber_Prop) 
+		handleClick (this.props.Row.TableNumber) 
 	}
-	
-
-	
-//Testing - ExpandableRowsTable_2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}	
-	render() {    
-
-		const MyExportCSV = props => {
-			const handleClick = () => {
-			  props.onExport();
-			};
-			return (
-			  <div>
-				<Row>
-				<button className="btn btn-primary mt-0 mb-1 mr-2" onClick={handleClick}>
-				  Export
-				</button>
-				<button className="btn btn-secondary mt-0 mb-1" onClick={handleClick}>
-				  Upload Table
-				</button>
-
-				</Row>
-			  </div>
-			);
-		};
-	
+//Testing - ExpandableRowsTable2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}
+	render() {     
 		return (
 			<ToolkitProvider
 				data={TableData}
 				columns={tableColumns}
 				keyField="TableNumber"
 				exportCSV={ { onlyExportFiltered: true, exportAll: false } }
-				
+				search
 			  >
 				{props => (
 				  <div>
-				    <MyExportCSV {...props.csvProps} />
-					
+					<ExportCSVButton className="btn btn-secondary mt-1 ml-1 mb-1" { ...props.csvProps }>Export</ExportCSVButton>
+
 					<BootstrapTable
 						{...props.baseProps}
 						keyField="ID"
@@ -1752,7 +1728,7 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 						cellEdit={ cellEditFactory({
 							mode: 'click',
 							blurToSave: true
-					  }) }
+						}) }
 					/>
 				  </div>
 				)}
@@ -1761,11 +1737,11 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 	};
 };
 
-class Container_2ndTable extends React.Component{
+class Container2ndTable extends React.Component{
     constructor(props){
         super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumber_State: this.props.Row.TableNumber
 			}
     }
 	//"Testing - Container_2ndTable " + {this.props.TableNumber_Prop}	
@@ -1787,11 +1763,11 @@ class Container_2ndTable extends React.Component{
 						</UncontrolledDropdown>
 					  </div>
 					   <CardTitle id="HeaderID" tag="h3" className="mb-1" >
-						  {this.props.TableName} - Table 
+						  {this.props.TableName} - Rate Type: {this.props.Row.RateType} - Table Number: {this.props.Row.TableNumber}
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
-					  <ExpandableRowsTable_2ndTable TableNumber_Prop = {this.props.TableNumber_Prop} TableName= {this.props.TableName} />	
+						<ExpandableRowsTable2ndTable Row = {this.props.Row } />	
 					</CardBody>
 				</Card>
 			  </Container>
@@ -1803,4 +1779,4 @@ class Container_2ndTable extends React.Component{
 
 
 
-export default Container_2ndTable;
+export default Container2ndTable;

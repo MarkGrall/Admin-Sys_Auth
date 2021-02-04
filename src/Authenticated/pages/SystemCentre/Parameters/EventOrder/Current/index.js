@@ -1,23 +1,16 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
+import React  from "react";
+import {Card, CardBody,Container
   } from "reactstrap";
-import { MoreHorizontal } from "react-feather";
-
-
 import BootstrapTable  from "react-bootstrap-table-next";
 
 import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter   } from 'react-bootstrap-table2-filter';
 
-import paginationFactory from "react-bootstrap-table2-paginator";
-
-import {  MinusCircle, PlusCircle } from "react-feather";
 
 let nameFilter;
 let DefaultSelected = "3";
 
-const tableColumns_2ndTable = [
+const tableColumns2ndTable = [
 	  {
 		dataField: "Event",
 		text: "Event"	
@@ -55,7 +48,7 @@ const tableColumns_2ndTable = [
 	   }
 	];
 
-const TableData_1 = [
+const TableData1 = [
 			  {
 				Event: "Policy Start - 1",
 				Order: "1",
@@ -287,30 +280,30 @@ const handleClick = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
+class ExpandableRowsTable2ndTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
 	}
 	  
 	componentDidMount() {
-		handleClick (this.state.TableNumber_State) 
+		handleClick (this.state.TableNumberState) 
 	}
 
 	componentDidUpdate() {
-		//this.setState({TableNumber_State: this.props.TableNumber_Prop})
-		//alert( 'State is ' + this.state.TableNumber_State  +  'Prop is ' + this.props.TableNumber_Prop );
-		handleClick (this.props.TableNumber_Prop) 
+		//this.setState({TableNumberState: this.props.TableNumberProp})
+		//alert( 'State is ' + this.state.TableNumberState  +  'Prop is ' + this.props.TableNumberProp );
+		handleClick (this.props.TableNumberProp) 
 	}
-//Testing - ExpandableRowsTable_2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}	
+//Testing - ExpandableRowsTable2ndTable - state   {this.state.TableNumberState }   - Prop  {this.props.TableNumberProp}	
 	render() {     
 
     return (
 	<ToolkitProvider
-        data={TableData_1}
-        columns={tableColumns_2ndTable}
+        data={TableData1}
+        columns={tableColumns2ndTable}
 		keyField="TableNumber"
 		exportCSV={ { onlyExportFiltered: true, exportAll: false } }
 		search
@@ -323,8 +316,8 @@ class ExpandableRowsTable_2ndTable extends React.Component {
                 {...props.baseProps}
                 keyField="ID"
                 bordered={true}
-				data={TableData_1}
-				columns={tableColumns_2ndTable}
+				data={TableData1}
+				columns={tableColumns2ndTable}
 				filter={ filterFactory() }
               />
           </div>
@@ -342,7 +335,7 @@ const CurrentTable = () => (
 	<Card className="card-margin">
 
 		<CardBody>
-		<ExpandableRowsTable_2ndTable TableNumber_Prop = {DefaultSelected} />	
+		<ExpandableRowsTable2ndTable TableNumberProp = {DefaultSelected} />	
 			
 		</CardBody>
 	</Card>

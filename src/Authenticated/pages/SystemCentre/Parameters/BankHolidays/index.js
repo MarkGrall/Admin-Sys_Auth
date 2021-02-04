@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table, Row, Col,
+import { Card, CardBody, CardHeader, CardTitle, Container , Row, Col,
 UncontrolledDropdown,   DropdownItem, DropdownMenu, DropdownToggle,
 } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
@@ -37,7 +37,7 @@ const TableData = [
   { BankHoliday: "01/01/2019" }
 ]
 
-const BankHoliday_Dates = () => {
+const BankHolidayDates = () => {
   
   const MyExportCSV = props => {
 	  const handleClick = () => {
@@ -119,7 +119,7 @@ const CurrentTable = () => (
 				</CardHeader>
 
 				<CardBody>
-					<BankHoliday_Dates  />	
+					<BankHolidayDates  />	
 				</CardBody>
 			</Card>
 		</Col>

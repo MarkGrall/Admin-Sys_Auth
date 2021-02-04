@@ -4,7 +4,6 @@ import avatar1 from "../../assets/img/avatars/avatar.jpg";
 import avatar2 from "../../assets/img/avatars/avatar-2.jpg";
 import avatar3 from "../../assets/img/avatars/avatar-3.jpg";
 import avatar4 from "../../assets/img/avatars/avatar-4.jpg";
-import avatar5 from "../../assets/img/avatars/avatar-5.jpg";
 import avatarMG from "../../assets/img/avatars/avatarMG.jpg";
 import avatarAL from "../../assets/img/avatars/avatarAL_4.jpg";
 
@@ -13,7 +12,7 @@ import {
   Grid,
   TextField,
 } from "@material-ui/core";
-import { Send } from "@material-ui/icons";
+
 import axios from "axios";
 
 import {
@@ -22,8 +21,6 @@ import {
   Card,
   Col,
   Input,
-  InputGroup,
-  InputGroupAddon,
   ListGroupItem,
   Media,
   Row
@@ -35,7 +32,6 @@ import { Phone, Video, MoreHorizontal } from "react-feather";
 import { withAuth } from '@okta/okta-react';
 
 var dt
-let isOwnMessage ;
 let RoomName = "3"
 const Chat = require("twilio-chat");
 const styles = {
@@ -56,7 +52,7 @@ const styles = {
 class ChatMessage extends React.Component {
   
   render() {
-    const { message, email, position, avatar, name, children, time } = this.props;
+    const { message, email } = this.props;
     const isOwnMessage = message.author === email;
 	
 	const FnTimeNow = () => {
@@ -67,7 +63,6 @@ class ChatMessage extends React.Component {
 	}
 
 	const FnImage = (props) => {
-		const { email} = props;
 		switch(props.email) {
 			case 'mark.grall@gmail.com':
 			  return <img src={avatarMG} className="rounded-circle mr-1" alt={props.email} width="40" height="40" /> ;
@@ -77,7 +72,6 @@ class ChatMessage extends React.Component {
 			default:
 			  return <img src={avatar1} className="rounded-circle mr-1" alt={props.email} width="40" height="40" /> ;
 		}
-	return <div/>
 	}
 
 	const Calc_Position= isOwnMessage ? "right" : "left" ;	
@@ -250,8 +244,6 @@ class ChatScreen2 extends React.Component {
   componentDidMount = async () => {
 //	console.log( "6", this.props)	
 	
-	const { location } = this.props;
-    const { state } = location || {};
 	let token = "";
 
   //  if (!email || !room) { this.props.history.replace("/");  }
@@ -314,7 +306,7 @@ class ChatScreen2 extends React.Component {
 
   handleTyping = async (channel) => {
 	//channel.on('typingStarted', alert("Here") ) 
-	console.log("Typing" , this .state);
+	console.log("Typing" , this.state);
   };
 
   handleMessageAdded = (message) => {
@@ -348,8 +340,8 @@ class ChatScreen2 extends React.Component {
 	}
 		
   handleKeyPress = (e) => {    
-	const { text, channel } = this.state;
-	if (e.charCode == 13) {
+	const { channel } = this.state;
+	if (e.charCode === 13) {
 		this.sendMessage();
 	} 
 	else {
@@ -361,9 +353,7 @@ class ChatScreen2 extends React.Component {
   }
 
   render() {
-    const { loading, text, messages, channel } = this.state;
-    const { location } = this.props;
-    const { state } = location || {};
+    const { text, messages, channel } = this.state;
 
 //	console.log("Render location", location)
 //	console.log("Render props", this.props)

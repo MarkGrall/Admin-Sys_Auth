@@ -1,6 +1,5 @@
 import React , { useState } from "react";
-import { Card,CardBody, Container, Row, Col,
-Nav, NavItem, NavLink,TabContent,TabPane, FormGroup, Form, Label
+import { Card,CardBody, Container, Col,FormGroup, Form, Label
  } from "reactstrap";
 
 import DatePicker from "react-datepicker";
@@ -10,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css"
 const MyComponent = (props) => {
   const {
     S_Date,
-	min_Date,DateLabel
+	min_Date
   } = props;
   
   let isReadOnly = false; 
@@ -62,11 +61,7 @@ class DateReturn extends React.Component {
       formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
     })
   }
-  componentDidUpdate() {
-    // Access ISO String and formatted values from the DOM.
-    var hiddenInputElement = document.getElementById("example-datepicker");
-    
-  }
+
   //<DateExample ExsitingDate={this.props.Exsitingdate} />
   render() {
     return (
@@ -88,9 +83,6 @@ const DataParameters = (props) => {
   const {
 	Row
   } = props;
-
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
 
 //<DateReturn  Date_Label={"Effective Date To"} Date_Var={Row.EffectiveDateTo} />
 //<DateReturn  Date_Label={"Run Date To"} Date_Var={Row.RunDateTo} />

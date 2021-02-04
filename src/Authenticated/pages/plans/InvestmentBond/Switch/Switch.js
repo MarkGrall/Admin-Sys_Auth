@@ -1,18 +1,15 @@
 import React from "react";
 
 import {
-  Badge,
+
   Button,
   Card,
   CardBody,
   CardHeader,
-  CardImg,
   CardTitle,
   Col,
-  Collapse,
   Container,
   CustomInput,
-  DropdownItem,
   DropdownMenu,
   DropdownToggle,
   Form,
@@ -21,8 +18,6 @@ import {
   Label,
   ListGroup,
   ListGroupItem,
-  Nav,
-  Progress,
   Row,
   Table,
   UncontrolledDropdown
@@ -30,24 +25,11 @@ import {
 
 
 import {
-  AlertCircle,
-  Bell,
-  BellOff,
   HelpCircle,
-  Home,
-  MessageCircle,
-  PieChart,
   PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  ArrowRightCircle,
-  ArrowDownCircle,
-  RotateCw,
   X
 } from "react-feather";
 
-import { MoreHorizontal } from "react-feather";
 import { Form as FinalForm, Field } from 'react-final-form'
 
 import Funds from "../Overview/Funds";
@@ -59,14 +41,6 @@ const FundsData = [
 { Fund: "Managed Fund 1", Name1: "Value", Value1: "£30,000" , Name2: "Units", Value2:"5,000", Name3:"Price", Value3:"£6.00", Name4: "Policy Value Percent", Value4: "30%", Name5: "Future Premiums Percent", Value5: "50%"}
 
 ]
-
-const FundsSwichInData = [
- { Fund: "Emerging Market Equity Income Fund",Name1: "Value", Value1: "£40,000" , Name2: "Units", Value2:"20,000", Name3:"Price", Value3:"£2.00", Name4: "Policy Value Percent", Value4: "40%", Name5: "Future Premiums Percent", Value5: "25%" },
- { Fund: "High Yield Income Fund", Name1: "Value", Value1: "£30,000" , Name2: "Units", Value2:"10,000", Name3:"Price", Value3:"£3.00", Name4: "Policy Value Percent", Value4: "30%", Name5: "Future Premiums Percent", Value5: "25%"},
-{ Fund: "Managed Fund 1", Name1: "Value", Value1: "£30,000" , Name2: "Units", Value2:"5,000", Name3:"Price", Value3:"£6.00", Name4: "Policy Value Percent", Value4: "30%", Name5: "Future Premiums Percent", Value5: "50%"}
-
-]
-
 
 const Condition = ({ when, is, children }) => (
   <Field name={when} subscription={{ value: true }}>
@@ -80,7 +54,6 @@ const onSubmit = async values => {
 }
 const NavbarDropdown = ({
   children,
-  showBadge,
   header,
   icon: Icon
 }) => (
@@ -144,22 +117,6 @@ const options = [
  { value: "Managed Fund 6", label: "Managed Fund 6" },
  { value: "Managed Fund 7", label: "Managed Fund 17" }, 
 ]
-
-const Info_SwitchType = [
-  {
-    type: "Switch_Amount",
-    title: "Switch Amount",
-    description: "Switch an Amount from one fund to a different fund.",
-  },
-  {
-    type: "Switch_Rebalance",
-    title: "Rebalance Funds",
-    description: "Rebalance funds to specified funds.",
-  }
-];
-
-
-
 
 const SwitchType = () => (
  <Card>

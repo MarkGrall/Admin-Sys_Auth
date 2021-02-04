@@ -1,14 +1,10 @@
 import React from "react";
 
-import { Col, Container,Form,FormGroup, Row } from "reactstrap";
+import { Col, Row } from "reactstrap";
 
 import WorldMap from "./WorldMap";
 import Line from "./Line";
-import Bar from "./Bar";
-import Doughnut from "./Doughnut";
 import Pie from "./Pie";
-import Radar from "./Radar";
-import Polar from "./Polar";
 import { Target,RefreshCw, ArrowUpCircle,BarChart2 } from "react-feather";
 
 import {
@@ -23,7 +19,6 @@ import {
   ModalHeader
 } from "reactstrap";
 
-import jQuery from "jquery";
 
 const colors = [
   {
@@ -72,48 +67,6 @@ const Funds = [
 	Risk: 5
   }
 ];
-
-const Chartjs = () => (
-  <Container fluid className="p-0">
-    <h1 className="h3 mb-3">Chart.js</h1>
-
-    <Row>
-      <Col lg="6">
-        <Line />
-      </Col>
-      <Col lg="6">
-        <Bar />
-      </Col>
-      <Col lg="6">
-        <Doughnut />
-      </Col>
-      <Col lg="6">
-        <Pie />
-      </Col>
-      <Col lg="6">
-        <Radar />
-      </Col>
-      <Col lg="6">
-        <Polar />
-      </Col>
-    </Row>
-  </Container>
-);
-
-const FundDescription = () => (
-<Card>
-    <CardHeader>
-      <CardTitle tag="h5" className="mb-0">Fund Description</CardTitle>
-    </CardHeader>
-    <CardBody>
-		This fund is a mix of assets such as bonds, shares, property and cash.
-		It also features several risk management strategies.
-		This is a low risk fund which aims to have a small allocation to higher
-		risk assets such as shares and property. The fund manager monitors
-		and rebalances the fund regularly and may change the mix over time.
-	</CardBody>
-</Card>	
-);
 
 class FundModals extends React.Component {
   constructor(props) {

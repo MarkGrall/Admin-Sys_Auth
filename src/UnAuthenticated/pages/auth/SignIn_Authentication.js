@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import SignIn_Form from './SignIn_Form';
+import SignInForm from './SignIn_Form';
 import { withAuth } from '@okta/okta-react';
 
 export default withAuth(class Login extends Component {
@@ -26,6 +26,6 @@ export default withAuth(class Login extends Component {
     if (this.state.authenticated === null) return null;
     return this.state.authenticated ?
       <Redirect to={{ pathname: '/' }} /> :
-      <SignIn_Form baseUrl={this.props.baseUrl} />;
+      <SignInForm baseUrl={this.props.baseUrl} />;
   }
 });

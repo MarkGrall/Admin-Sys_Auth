@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Col, Card, CardBody,CardHeader,CardTitle,Container, Media, Row } from "reactstrap";
+import { Col, Card,Container,  Row } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch} from "@fortawesome/free-solid-svg-icons";

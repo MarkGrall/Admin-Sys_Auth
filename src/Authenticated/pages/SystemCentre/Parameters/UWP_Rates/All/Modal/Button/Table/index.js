@@ -1,39 +1,41 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
+import React from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container, DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
-
-
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter  } from 'react-bootstrap-table2-filter';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 
-import {  MinusCircle, PlusCircle } from "react-feather";
-
-const B_Label="UWP Rate"
+const BLabel="Event Order"
 let nameFilter;
 const tableColumns = [
 	  {
-		dataField: "RateType",
-		text: "Rate Type"	
+		dataField: "Event",
+		text: "Event",
+		editable: false		
 	  },
 	  {
-		dataField: "UWPRate",
-		text: "UWP Rate",
+		dataField: "Order",
+		text: "Order",
+		validator: (newValue, row, column) => {
+			if (isNaN(newValue)) {
+			return {
+			  valid: false,
+			  message: "Event Order should be an integer"
+			};
+			}
+			if (newValue <1 ) {
+			return {
+			  valid: false,
+			  message: "Event Order should be greater than 0"
+			};
+			}
+			return true;
+		}
 	  },
-	  {
-		dataField: "TrancheDateFrom",
-		text: "Tranche Date From",
-	  },
-	  {
-		dataField: "TrancheDateTo",
-		text: "Tranche Date To",
-	  },
-	  
+
 	   {
 			dataField: 'TableNumber',
 			text: '',
@@ -60,255 +62,224 @@ const tableColumns = [
 
 const TableData = [
 			  {
-				TableNumber:4,
-				ID: "1",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.01",
-				TrancheDateFrom:"01/01/2020",
-				TrancheDateTo: ""
+				Event: "Policy Start - 1",
+				Order: "1",
+				TableNumber:1,
+				ID: "1"
 			  },
 			  {
-				TableNumber:4,
-				ID: "2",
-				RateType: "Terminal Bonus",
-				UWPRate: "0.005",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
+				Event: "Policy Anniversary",
+				Order: "2",
+				TableNumber:1,
+				ID: "2"
 			  },
-			  {
-				TableNumber:4,
-				ID: "3",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.006",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:1,
+				ID: "3"
 			  },
-			  {
-				TableNumber:4,
-				ID: "4",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.002",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:1,
+				ID: "4"
 			  },
-			  {
-				TableNumber:4,
-				ID: "5",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.1",
-				TrancheDateFrom:"01/01/2020",
-				TrancheDateTo: ""
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:1,
+				ID: "5"
 			  },
-			  {
-				TableNumber:4,
-				ID: "6",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.05",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
+				{
+				Event: "Early Encashment Charge",
+				Order: "6",
+				TableNumber:1,
+				ID: "6"
 			  },
-			  {
-				TableNumber:4,
-				ID: "7",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.06",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:1,
+				ID: "7"
 			  },
-			  {
-				TableNumber:4,
-				ID: "8",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.02",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:1,
+				ID: "8"
 			  },
-			  //////////
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:1,
+				ID: "9"
+			  },
 			  
-			  
-
 			  {
+				Event: "Policy Start - 2",
+				Order: "1",
+				TableNumber:2,
+				ID: "11"
+			  },
+			  {
+				Event: "Policy Anniversary",
+				Order: "2",
+				TableNumber:2,
+				ID: "12"
+			  },
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:2,
+				ID: "13"
+			  },
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:2,
+				ID: "14"
+			  },
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:2,
+				ID: "15"
+			  },
+			  {
+				Event: "Early Encashment Charge",
+				Order: "6",
+				TableNumber:2,
+				ID: "26"
+			  },
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:2,
+				ID: "27"
+			  },
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:2,
+				ID: "28"
+			  },
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:2,
+				ID: "29"
+			  },
+			  
+			  {
+				Event: "Policy Start - 3",
+				Order: "1",
 				TableNumber:3,
-				ID: "10",
-				RateType: "Terminal Bonus",
-				UWPRate: "0.005",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
+				ID: "31"
 			  },
 			  {
+				Event: "Policy Anniversary",
+				Order: "2",
 				TableNumber:3,
-				ID: "11",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.006",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
+				ID: "32"
+			  },
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:3,
+				ID: "33"
+			  },
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:3,
+				ID: "34"
+			  },
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:3,
+				ID: "35"
 			  },
 			  {
+				Event: "Early Encashment Charge",
+				Order: "6",
 				TableNumber:3,
-				ID: "12",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.002",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
+				ID: "36"
 			  },
-			  {
+				{
+				Event: "Partial Surrender",
+				Order: "7",
 				TableNumber:3,
-				ID: "14",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.05",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
+				ID: "37"
 			  },
-			  {
+				{
+				Event: "Full Surrender",
+				Order: "8",
 				TableNumber:3,
-				ID: "15",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.06",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
+				ID: "38"
 			  },
-			  {
+				{
+				Event: "Death",
+				Order: "9",
 				TableNumber:3,
-				ID: "16",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.02",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
+				ID: "39"
 			  },
 			  
 			  
-			  ////////////
-			  
 			  {
-				TableNumber:2,
-				ID: "17",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.01",
-				TrancheDateFrom:"01/01/2020",
-				TrancheDateTo: ""
+				Event: "Policy Start - 4",
+				Order: "1",
+				TableNumber:4,
+				ID: "41"
 			  },
 			  {
-				TableNumber:2,
-				ID: "18",
-				RateType: "Terminal Bonus",
-				UWPRate: "0.005",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
+				Event: "Policy Anniversary",
+				Order: "2",
+				TableNumber:4,
+				ID: "42"
+			  },
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:4,
+				ID: "43"
+			  },
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:4,
+				ID: "44"
+			  },
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:4,
+				ID: "45"
 			  },
 			  {
-				TableNumber:2,
-				ID: "19",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.006",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
+				Event: "Early Encashment Charge",
+				Order: "6",
+				TableNumber:4,
+				ID: "46"
 			  },
-			  {
-				TableNumber:2,
-				ID: "20",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.002",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:4,
+				ID: "47"
 			  },
-			  {
-				TableNumber:2,
-				ID: "21",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.1",
-				TrancheDateFrom:"01/01/2020",
-				TrancheDateTo: ""
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:4,
+				ID: "48"
 			  },
-			  {
-				TableNumber:2,
-				ID: "22",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.05",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
-			  },
-			  {
-				TableNumber:2,
-				ID: "23",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.06",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
-			  },
-			  {
-				TableNumber:2,
-				ID: "24",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.02",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
-			  },
-			  
-			  
-			  ///////////////
-			  {
-				TableNumber:1,
-				ID: "25",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.01",
-				TrancheDateFrom:"01/01/2020",
-				TrancheDateTo: ""
-			  },
-			  {
-				TableNumber:1,
-				ID: "26",
-				RateType: "Terminal Bonus",
-				UWPRate: "0.005",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
-			  },
-			  {
-				TableNumber:1,
-				ID: "27",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.006",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
-			  },
-			  {
-				TableNumber:1,
-				ID: "28",  
-				RateType: "Terminal Bonus",
-				UWPRate: "0.002",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
-			  },
-			  {
-				TableNumber:1,
-				ID: "29",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.1",
-				TrancheDateFrom:"01/01/2020",
-				TrancheDateTo: ""
-			  },
-			  {
-				TableNumber:1,
-				ID: "30",  
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.05",
-				TrancheDateFrom:"01/01/2019",
-				TrancheDateTo: "01/01/2020"
-			  },
-			  {
-				TableNumber:1,
-				ID: "31",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.16",
-				TrancheDateFrom:"01/01/2018",
-				TrancheDateTo: "01/01/2019"
-			  },
-			  {
-				TableNumber:1,
-				ID: "32",     
-				RateType: "Market Value Adjustment",
-				UWPRate: "0.12",
-				TrancheDateFrom:"01/01/2016",
-				TrancheDateTo: "01/01/2018"
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:4,
+				ID: "49"
 			  }
 			  
 			  
@@ -323,46 +294,25 @@ const handleClick = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
+class ExpandableRowsTable2ndTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
 	}
 	  
 	componentDidMount() {
-		handleClick (this.state.TableNumber_State) 
+		handleClick (this.state.TableNumberState) 
 	}
 
 	componentDidUpdate() {
-		//this.setState({TableNumber_State: this.props.TableNumber_Prop})
-		//alert( 'State is ' + this.state.TableNumber_State  +  'Prop is ' + this.props.TableNumber_Prop );
-		//handleClick (this.props.TableNumber_Prop) 
+		//this.setState({TableNumberState: this.props.TableNumberProp})
+		//alert( 'State is ' + this.state.TableNumberState  +  'Prop is ' + this.props.TableNumberProp );
+		//handleClick (this.props.TableNumberProp) 
 	}
-//Testing - ExpandableRowsTable_2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}	
-	render() { 
-
-		const MyExportCSV = props => {
-			const handleClick = () => {
-			  props.onExport();
-			};
-			return (
-			  <div>
-				<Row>
-				<button className="btn btn-primary mt-0 mb-1 mr-2" onClick={handleClick}>
-				  Export
-				</button>
-				<button className="btn btn-secondary mt-0 mb-1" onClick={handleClick}>
-				  Upload Table
-				</button>
-
-				</Row>
-			  </div>
-			);
-		};
-
-    
+//Testing - ExpandableRowsTable2ndTable - state   {this.state.TableNumberState }   - Prop  {this.props.TableNumberProp}	
+	render() {     
 		return (
 			<ToolkitProvider
 				data={TableData}
@@ -373,8 +323,7 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 			  >
 				{props => (
 				  <div>
-				    <MyExportCSV {...props.csvProps} />
-					
+					<ExportCSVButton className="btn btn-secondary mt-1 ml-1 mb-1" { ...props.csvProps }>Export</ExportCSVButton>
 					<BootstrapTable
 						{...props.baseProps}
 						keyField="ID"
@@ -394,14 +343,14 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 	};
 };
 
-class Container_2ndTable extends React.Component{
+class Container2ndTable extends React.Component{
     constructor(props){
         super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
     }
-	//"Testing - Container_2ndTable " + {this.props.TableNumber_Prop}	
+	//"Testing - Container2ndTable " + {this.props.TableNumberProp}	
     render(){
         return(
 			<Container fluid className="p-0">
@@ -420,11 +369,11 @@ class Container_2ndTable extends React.Component{
 						</UncontrolledDropdown>
 					  </div>
 					   <CardTitle id="HeaderID" tag="h3" className="mb-1" >
-						  {B_Label} - Table 
+						  {BLabel} - Table 
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
-					  <ExpandableRowsTable_2ndTable TableNumber_Prop = {this.props.TableNumber_Prop} />	
+					  <ExpandableRowsTable2ndTable TableNumberProp = {this.props.TableNumberProp} />	
 					</CardBody>
 				</Card>
 			  </Container>
@@ -436,4 +385,4 @@ class Container_2ndTable extends React.Component{
 
 
 
-export default Container_2ndTable;
+export default Container2ndTable;

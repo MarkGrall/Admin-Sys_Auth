@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
+//import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 
   
 import {
@@ -13,11 +13,9 @@ import plansLayout from "../layouts/Plans";
 import AuthLayout from "../layouts/Auth";
 
 import Page404 from "../pages/auth/Page404";
-import Page500 from "../pages/auth/Page500";
-import Charges from "../pages/ProductCentre/Product/Charges/index";
+//import Page500 from "../pages/auth/Page500";
 
-import ClientOverview from "../pages/Client";
-
+//import ClientOverview from "../pages/Client";
 //const ClientOverview = async(() => import("../pages/Client"));
 
 

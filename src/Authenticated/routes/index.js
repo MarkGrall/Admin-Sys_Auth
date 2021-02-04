@@ -2,20 +2,10 @@ import async from "../components/Async";
 
 import {
   Activity,
-  BookOpen as BookOpenIcon,
   Briefcase as BriefcaseIcon,
-  CheckSquare as CheckSquareIcon,
-  Grid as GridIcon,
-  Heart as HeartIcon,
   Layout as LayoutIcon,
-  List as ListIcon,
-  MapPin as MapPinIcon,
-  Monitor as MonitorIcon,
-  PieChart as PieChartIcon,
-  Sliders as SlidersIcon,
   User as UserIcon,
   Users as UsersIcon,
-  Calendar as CalendarIcon
 } from "react-feather";
 
 import {BrowserRouter as Router,Route, Redirect,Switch} from 'react-router-dom';

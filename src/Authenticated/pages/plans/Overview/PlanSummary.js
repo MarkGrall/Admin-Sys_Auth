@@ -2,21 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import {
-  Badge,
-  Button,
+   Button,
   Card,
   CardBody,
   CardHeader,
-  CardImg,
-  CardTitle,
+   CardTitle,
   Col,
   Container,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  ListGroup,
-  ListGroupItem,
-  Progress,
   Row,
   Table,
   UncontrolledDropdown
@@ -30,70 +25,6 @@ const PlanSummaryData = [
  { PlanType: "Investment Bond",linkPlan: "/plans/InvestmentBond", Name1: "PlanID", Value1: "87645673", Name2: "Plan Name", Value2: "Investment Bond", Name3: "Value", Value3:"£80,000", Name4:"Payment Status", Value4:"Paid Up", Name5:"Paid To Date", Value5:"05/01/2020" }
 ]
   
-
-const SinglePlan = ( {planSummary,i} ) => (
-  <Card className="card-margin">
-    <CardHeader>
-      <div className="card-actions float-right">
-        <UncontrolledDropdown>
-          <DropdownToggle tag="a">
-            <MoreHorizontal />
-          </DropdownToggle>
-          <DropdownMenu right>
-            <DropdownItem>Action</DropdownItem>
-            <DropdownItem>Another Action</DropdownItem>
-            <DropdownItem>Something else here</DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown>
-      </div>
-      <CardTitle tag="h5" className="mb-0">
-        Personal Pensionaa
-      </CardTitle>
-    </CardHeader>
-    <CardBody>
-      <Table size="sm" className="my-2">
-        <tbody>
-          <tr>
-            <th> {planSummary.Name1} </th>
-            <td>{planSummary.Value1}</td>
-          </tr>
-          <tr>
-            <th>Plan Name:</th>
-            <td>Complete Personal Pension</td>
-          </tr>
-          <tr>
-            <th>Current Value:</th>
-            <td>£100,000</td>
-          </tr>
-          <tr>
-            <th>Payment Status:</th>
-            <td>Monthly In-Force</td>
-          </tr>
-          <tr>
-            <th>Paid To Date:</th>
-            <td>11/01/2020</td>
-          </tr>
-        </tbody>
-      </Table>
-      <hr />
-	  
-	  <div className="buttonHolder">
-		   <Link to="/plans/PersonalPension">
-		  <Button color="primary" >
-				View Plan
-		  </Button>
-		  </Link>
-		  
-		    <Link to="/auth/sign-in">
-                <Button color="primary" size="lg">
-                  Reset password
-                </Button>
-              </Link>
-		  
-	  </div>	
-    </CardBody>
-  </Card>
-);
 
 //<Col cuscol2={5}>
 class Plans extends React.Component {

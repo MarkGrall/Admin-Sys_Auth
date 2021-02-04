@@ -1,19 +1,11 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
+import React  from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container,  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
 //
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-
-import {  MinusCircle, PlusCircle } from "react-feather";
-
-import jQuery from "jquery";
-
-window.jQuery = jQuery;
 
 
 const tableColumns = [

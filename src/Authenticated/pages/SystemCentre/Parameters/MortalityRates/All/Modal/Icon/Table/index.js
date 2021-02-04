@@ -1,20 +1,13 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
+import React from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container, DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
-
-
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter   } from 'react-bootstrap-table2-filter';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 
-import {  MinusCircle, PlusCircle } from "react-feather";
-
-const B_Label="Event Order"
 let nameFilter;
 
 
@@ -1694,7 +1687,7 @@ const handleClick = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
+class ExpandableRowsTable2ndTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -1711,7 +1704,7 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 		//alert( 'State is ' + this.state.TableNumber_State  +  'Prop is ' + this.props.TableNumber_Prop );
 		handleClick (this.props.Row.TableNumber) 
 	}
-//Testing - ExpandableRowsTable_2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}	
+//Testing - ExpandableRowsTable2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}
 	render() {     
 		return (
 			<ToolkitProvider
@@ -1744,7 +1737,7 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 	};
 };
 
-class Container_2ndTable extends React.Component{
+class Container2ndTable extends React.Component{
     constructor(props){
         super(props);
 		this.state = {
@@ -1774,7 +1767,7 @@ class Container_2ndTable extends React.Component{
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
-					  <ExpandableRowsTable_2ndTable Row = {this.props.Row } />	
+						<ExpandableRowsTable2ndTable Row = {this.props.Row } />	
 					</CardBody>
 				</Card>
 			  </Container>
@@ -1786,4 +1779,4 @@ class Container_2ndTable extends React.Component{
 
 
 
-export default Container_2ndTable;
+export default Container2ndTable;

@@ -1,12 +1,11 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody, Col, Tooltip, Row  } from "reactstrap";
+import React  from "react";
+import {Button, Card, CardBody, Col,  Row  } from "reactstrap";
 
 
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-import {  MinusCircle, PlusCircle } from "react-feather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFilePdf} from "@fortawesome/free-solid-svg-icons";
 
@@ -94,30 +93,7 @@ class ExpandableRowsTable extends React.Component {
   }
 
   render() { 
-   const expandRow = {
-    renderer: row => (
-      <div>
-        
-        <p>
-          You can render anything here, also you can add additional data on every row object.
-        </p>
-      </div>
-    ),
-    showExpandColumn: true,
-    expandHeaderColumnRenderer: ({ isAnyExpands }) =>
-      isAnyExpands ? (
-        <MinusCircle width={16} height={16} />
-      ) : (
-        <PlusCircle width={16} height={16} />
-      ),
-    expandColumnRenderer: ({ expanded }) =>
-      expanded ? (
-        <MinusCircle width={16} height={16} />
-      ) : (
-        <PlusCircle width={16} height={16} />
-      )
-  }
-  
+
     return ( 
 
     <Card>

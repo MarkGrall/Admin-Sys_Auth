@@ -1,11 +1,7 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,
-Nav, NavItem, NavLink,TabContent,TabPane
- } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
 import Overview from "./Details";
-
-
 
 const PlanDetails = (props) => (
   <Container fluid className="p-0">

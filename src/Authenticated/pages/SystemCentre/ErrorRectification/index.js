@@ -1,5 +1,5 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,
+import {
 Nav, NavItem, NavLink,TabContent,TabPane
  } from "reactstrap";
 
@@ -28,7 +28,7 @@ class TabsWithTextLabel extends React.Component {
   }
 
   render() {
-    const { name, className } = this.props;
+    const {  className } = this.props;
 
     return (
 	 

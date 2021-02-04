@@ -1,12 +1,11 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table} from "reactstrap";
+import { Card, CardBody, Container } from "reactstrap";
 
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-import { MinusCircle, PlusCircle, Edit2 } from "react-feather";
-import {  Trash } from "react-feather";
+import { MinusCircle, PlusCircle } from "react-feather";
 
 import TranDetails from "./index";
 
@@ -208,31 +207,6 @@ const tableColumnsSub = [
     sort: true
   }
 ]
-
-const BorderedTable = () => {
-  return (
-      <ToolkitProvider
-        keyField="Coverage"
-		data={tableDataSub}
-        columns={tableColumnsSub}
-      >
-          {props => (
-          <div>
-            <CardBody>
-              <BootstrapTable
-                {...props.baseProps}
-                bootstrap4
-                bordered={true}
-				data={tableDataSub}
-				columns={tableColumnsSub}
-              />
-            </CardBody>
-          </div>
-        )}
-      </ToolkitProvider>
-  );
-};
-
 
 const ExpandableRowsTable = () => {
   

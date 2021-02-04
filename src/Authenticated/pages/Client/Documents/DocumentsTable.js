@@ -1,19 +1,14 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody, Col, Tooltip, Row  } from "reactstrap";
+import React  from "react";
+import {Button, Card, CardBody, Col,  Row  } from "reactstrap";
 
-//
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-import {  MinusCircle, PlusCircle } from "react-feather";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFilePdf} from "@fortawesome/free-solid-svg-icons";
 
-
-import jQuery from "jquery";
-
-window.jQuery = jQuery;
 
 
 const tableColumns = [
@@ -34,19 +29,7 @@ const tableColumns = [
 
 ];
 
-const OptionsBar = (FundID, props) => {
-  const [tooltipOpenPDF, setTooltipOpenPDF] = useState(false);
-  const togglePDF = () => setTooltipOpenPDF(!tooltipOpenPDF);
-  
-  return (
-	<div className="mb-3">
-	  <FontAwesomeIcon icon={faFilePdf}  className="fa-3x m-2 text-danger" id="TooltipPDF" />
-	  <Tooltip placement="bottom" isOpen={tooltipOpenPDF} target="TooltipPDF" toggle={togglePDF}>
-		  Annual Benefit Statement
-	  </Tooltip>
-    </div>
-  );
-}
+
 
 const tableOne = [
   {
@@ -90,30 +73,7 @@ class ExpandableRowsTable extends React.Component {
   }
 
   render() { 
-   const expandRow = {
-    renderer: row => (
-      <div>
-        
-        <p>
-          You can render anything here, also you can add additional data on every row object.
-        </p>
-      </div>
-    ),
-    showExpandColumn: true,
-    expandHeaderColumnRenderer: ({ isAnyExpands }) =>
-      isAnyExpands ? (
-        <MinusCircle width={16} height={16} />
-      ) : (
-        <PlusCircle width={16} height={16} />
-      ),
-    expandColumnRenderer: ({ expanded }) =>
-      expanded ? (
-        <MinusCircle width={16} height={16} />
-      ) : (
-        <PlusCircle width={16} height={16} />
-      )
-  }
-  
+
     return ( 
 
     <Card>

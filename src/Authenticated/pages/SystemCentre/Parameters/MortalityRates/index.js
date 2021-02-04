@@ -1,9 +1,7 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,Nav, NavItem, NavLink,TabContent,TabPane } from "reactstrap";
+import { Card, Container, Nav, NavItem, NavLink,TabContent,TabPane } from "reactstrap";
 
 import classnames from "classnames";
-import BootstrapTable  from "react-bootstrap-table-next";
-import cellEditFactory from 'react-bootstrap-table2-editor';
 
 import Current from "./Current/index";
 import All from "./All/index";
@@ -29,7 +27,7 @@ class TabsWithTextLabel extends React.Component {
   }
 
   render() {
-    const { name, className } = this.props;
+    const { className } = this.props;
     return (
       <div className={"tab " + className}>
 		<Nav tabs>

@@ -1,6 +1,6 @@
 import React  from "react";
-import { Row, Col, ListGroup, ListGroupItem,  DropdownToggle, DropdownMenu, UncontrolledDropdown } from "reactstrap";
-import {  PlusCircle, HelpCircle } from "react-feather";
+import {  Col, ListGroup,  DropdownToggle, DropdownMenu, UncontrolledDropdown } from "reactstrap";
+import {  HelpCircle } from "react-feather";
 
 const Info_Bullet = ( {InfoDesc, header}) => (
 <Col sm={1}>

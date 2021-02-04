@@ -1,6 +1,5 @@
 import React from "react";
-import { Col, Card, CardBody,CardHeader,CardTitle,Container, Media, Row } from "reactstrap";
-
+import { Col, Card, Container, Media, Row } from "reactstrap";
 
 const ClientCont = () => (
  <Container fluid className="p-0">

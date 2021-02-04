@@ -252,7 +252,6 @@ const UserPicture = withAuth(class ProfilePage extends React.Component {
 			default:
 			  return <img src={avatar1} className="rounded-circle mr-1" alt={props.email} width="40" height="40" /> ;
 		}
-	return <div/>
 	}
 	
 	if (!this.state.user) return null;
