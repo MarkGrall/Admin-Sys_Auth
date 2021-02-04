@@ -1,31 +1,41 @@
-import React, { useState, Component }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
-  DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
+import React from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container, DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
-
-
 import BootstrapTable  from "react-bootstrap-table-next";
 import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
+import filterFactory, { textFilter  } from 'react-bootstrap-table2-filter';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 
-import {  MinusCircle, PlusCircle } from "react-feather";
-
-const B_Label="Early Encashment Charge"
+const BLabel="Event Order"
 let nameFilter;
-
 const tableColumns = [
 	  {
-		dataField: "Year",
-		text: "Year"	
+		dataField: "Event",
+		text: "Event",
+		editable: false		
 	  },
 	  {
-		dataField: "EarlyEncashmentCharge",
-		text: "Early Encashment Charge",
+		dataField: "Order",
+		text: "Order",
+		validator: (newValue, row, column) => {
+			if (isNaN(newValue)) {
+			return {
+			  valid: false,
+			  message: "Event Order should be an integer"
+			};
+			}
+			if (newValue <1 ) {
+			return {
+			  valid: false,
+			  message: "Event Order should be greater than 0"
+			};
+			}
+			return true;
+		}
 	  },
+
 	   {
 			dataField: 'TableNumber',
 			text: '',
@@ -52,162 +62,231 @@ const tableColumns = [
 
 const TableData = [
 			  {
-				TableNumber:4,
-				ID: "1",
-				Year:1,
-				EarlyEncashmentCharge: "5%"  
-			  },
-			  {
-				TableNumber:4,
-				ID: "2",
-				Year:2,
-				EarlyEncashmentCharge: "5%" 
-			  },
-			  {
-				TableNumber:4,
-				ID: "3",
-				Year:3,
-				EarlyEncashmentCharge: "5%" 
-			  },
-			  {
-				TableNumber:4,
-				ID: "4",
-				Year:4,
-				EarlyEncashmentCharge: "3%" 
-			  },
-			   {
-				TableNumber:4,
-				ID: "5",
-				Year:5,
-				EarlyEncashmentCharge: "1%" 
-			  },
-			   {
-				TableNumber:4,
-				ID: "6",
-				Year:"6+",
-				EarlyEncashmentCharge: "0%" 
-			  },
-
-
-////
-			  {
-				TableNumber:3,
-				ID: "7",
-				Year:1,
-				EarlyEncashmentCharge: "4%"  
-			  },
-			  {
-				TableNumber:3,
-				ID: "8",
-				Year:2,
-				EarlyEncashmentCharge: "4%" 
-			  },
-			  {
-				TableNumber:3,
-				ID: "9",
-				Year:3,
-				EarlyEncashmentCharge: "4%" 
-			  },
-			  {
-				TableNumber:3,
-				ID: "10",
-				Year:4,
-				EarlyEncashmentCharge: "3%" 
-			  },
-			   {
-				TableNumber:3,
-				ID: "11",
-				Year:5,
-				EarlyEncashmentCharge: "1%" 
-			  },
-			   {
-				TableNumber:3,
-				ID: "12",
-				Year:"6+",
-				EarlyEncashmentCharge: "0%" 
-			  },
-
-
-			  {
-				TableNumber:2,
-				ID: "13",
-				Year:1,
-				EarlyEncashmentCharge: "3%"  
-			  },
-			  {
-				TableNumber:2,
-				ID: "14",
-				Year:2,
-				EarlyEncashmentCharge: "3%" 
-			  },
-			  {
-				TableNumber:2,
-				ID: "15",
-				Year:3,
-				EarlyEncashmentCharge: "3%" 
-			  },
-			  {
-				TableNumber:2,
-				ID: "16",
-				Year:4,
-				EarlyEncashmentCharge: "3%" 
-			  },
-			   {
-				TableNumber:2,
-				ID: "17",
-				Year:5,
-				EarlyEncashmentCharge: "1%" 
-			  },
-			   {
-				TableNumber:2,
-				ID: "18",
-				Year:"6+",
-				EarlyEncashmentCharge: "0%" 
-			  },
-
-
-			  {
+				Event: "Policy Start - 1",
+				Order: "1",
 				TableNumber:1,
-				ID: "19",
-				Year:1,
-				EarlyEncashmentCharge: "2%"  
+				ID: "1"
 			  },
 			  {
+				Event: "Policy Anniversary",
+				Order: "2",
 				TableNumber:1,
-				ID: "20",
-				Year:2,
-				EarlyEncashmentCharge: "2%" 
+				ID: "2"
 			  },
-			  {
+				{
+				Event: "Single Premium",
+				Order: "3",
 				TableNumber:1,
-				ID: "21",
-				Year:3,
-				EarlyEncashmentCharge: "2%" 
+				ID: "3"
 			  },
-			  {
+				{
+				Event: "Regular Premium",
+				Order: "4",
 				TableNumber:1,
-				ID: "22",
-				Year:4,
-				EarlyEncashmentCharge: "3%" 
+				ID: "4"
 			  },
-			   {
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
 				TableNumber:1,
-				ID: "23",
-				Year:5,
-				EarlyEncashmentCharge: "1%" 
+				ID: "5"
 			  },
-			   {
+				{
+				Event: "Early Encashment Charge",
+				Order: "6",
 				TableNumber:1,
-				ID: "24",
-				Year:"6+",
-				EarlyEncashmentCharge: "0%" 
-			  }			  
+				ID: "6"
+			  },
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:1,
+				ID: "7"
+			  },
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:1,
+				ID: "8"
+			  },
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:1,
+				ID: "9"
+			  },
 			  
+			  {
+				Event: "Policy Start - 2",
+				Order: "1",
+				TableNumber:2,
+				ID: "11"
+			  },
+			  {
+				Event: "Policy Anniversary",
+				Order: "2",
+				TableNumber:2,
+				ID: "12"
+			  },
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:2,
+				ID: "13"
+			  },
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:2,
+				ID: "14"
+			  },
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:2,
+				ID: "15"
+			  },
+			  {
+				Event: "Early Encashment Charge",
+				Order: "6",
+				TableNumber:2,
+				ID: "26"
+			  },
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:2,
+				ID: "27"
+			  },
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:2,
+				ID: "28"
+			  },
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:2,
+				ID: "29"
+			  },
+			  
+			  {
+				Event: "Policy Start - 3",
+				Order: "1",
+				TableNumber:3,
+				ID: "31"
+			  },
+			  {
+				Event: "Policy Anniversary",
+				Order: "2",
+				TableNumber:3,
+				ID: "32"
+			  },
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:3,
+				ID: "33"
+			  },
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:3,
+				ID: "34"
+			  },
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:3,
+				ID: "35"
+			  },
+			  {
+				Event: "Early Encashment Charge",
+				Order: "6",
+				TableNumber:3,
+				ID: "36"
+			  },
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:3,
+				ID: "37"
+			  },
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:3,
+				ID: "38"
+			  },
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:3,
+				ID: "39"
+			  },
+			  
+			  
+			  {
+				Event: "Policy Start - 4",
+				Order: "1",
+				TableNumber:4,
+				ID: "41"
+			  },
+			  {
+				Event: "Policy Anniversary",
+				Order: "2",
+				TableNumber:4,
+				ID: "42"
+			  },
+				{
+				Event: "Single Premium",
+				Order: "3",
+				TableNumber:4,
+				ID: "43"
+			  },
+				{
+				Event: "Regular Premium",
+				Order: "4",
+				TableNumber:4,
+				ID: "44"
+			  },
+				{
+				Event: "Fixed Policy Charge",
+				Order: "5",
+				TableNumber:4,
+				ID: "45"
+			  },
+			  {
+				Event: "Early Encashment Charge",
+				Order: "6",
+				TableNumber:4,
+				ID: "46"
+			  },
+				{
+				Event: "Partial Surrender",
+				Order: "7",
+				TableNumber:4,
+				ID: "47"
+			  },
+				{
+				Event: "Full Surrender",
+				Order: "8",
+				TableNumber:4,
+				ID: "48"
+			  },
+				{
+				Event: "Death",
+				Order: "9",
+				TableNumber:4,
+				ID: "49"
+			  }
 			  
 			  
 ]
 
 
+//-------------------
 
 const { ExportCSVButton } = CSVExport;
 
@@ -215,46 +294,25 @@ const handleClick = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
+class ExpandableRowsTable2ndTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
 	}
 	  
 	componentDidMount() {
-		handleClick (this.state.TableNumber_State) 
+		handleClick (this.state.TableNumberState) 
 	}
 
 	componentDidUpdate() {
-		//this.setState({TableNumber_State: this.props.TableNumber_Prop})
-		//alert( 'State is ' + this.state.TableNumber_State  +  'Prop is ' + this.props.TableNumber_Prop );
-		//handleClick (this.props.TableNumber_Prop) 
+		//this.setState({TableNumberState: this.props.TableNumberProp})
+		//alert( 'State is ' + this.state.TableNumberState  +  'Prop is ' + this.props.TableNumberProp );
+		//handleClick (this.props.TableNumberProp) 
 	}
-//Testing - ExpandableRowsTable_2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}	
-	render() { 
-
-		const MyExportCSV = props => {
-			const handleClick = () => {
-			  props.onExport();
-			};
-			return (
-			  <div>
-				<Row>
-				<button className="btn btn-primary mt-0 mb-1 mr-2" onClick={handleClick}>
-				  Export
-				</button>
-				<button className="btn btn-secondary mt-0 mb-1" onClick={handleClick}>
-				  Upload Table
-				</button>
-
-				</Row>
-			  </div>
-			);
-		};
-
-    
+//Testing - ExpandableRowsTable2ndTable - state   {this.state.TableNumberState }   - Prop  {this.props.TableNumberProp}	
+	render() {     
 		return (
 			<ToolkitProvider
 				data={TableData}
@@ -265,8 +323,7 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 			  >
 				{props => (
 				  <div>
-				    <MyExportCSV {...props.csvProps} />
-					
+					<ExportCSVButton className="btn btn-secondary mt-1 ml-1 mb-1" { ...props.csvProps }>Export</ExportCSVButton>
 					<BootstrapTable
 						{...props.baseProps}
 						keyField="ID"
@@ -286,14 +343,14 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 	};
 };
 
-class Container_2ndTable extends React.Component{
+class Container2ndTable extends React.Component{
     constructor(props){
         super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
     }
-	//"Testing - Container_2ndTable " + {this.props.TableNumber_Prop}	
+	//"Testing - Container2ndTable " + {this.props.TableNumberProp}	
     render(){
         return(
 			<Container fluid className="p-0">
@@ -312,11 +369,11 @@ class Container_2ndTable extends React.Component{
 						</UncontrolledDropdown>
 					  </div>
 					   <CardTitle id="HeaderID" tag="h3" className="mb-1" >
-						  {B_Label} - Table 
+						  {BLabel} - Table 
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
-					  <ExpandableRowsTable_2ndTable TableNumber_Prop = {this.props.TableNumber_Prop} />	
+					  <ExpandableRowsTable2ndTable TableNumberProp = {this.props.TableNumberProp} />	
 					</CardBody>
 				</Card>
 			  </Container>
@@ -328,4 +385,4 @@ class Container_2ndTable extends React.Component{
 
 
 
-export default Container_2ndTable;
+export default Container2ndTable;

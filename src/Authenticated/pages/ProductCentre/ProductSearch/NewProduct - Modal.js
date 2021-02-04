@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table, Row, Col, Form, FormGroup,
-Button, Modal, ModalBody, ModalFooter, ModalHeader, CustomInput, Label,
-  ListGroup, ListGroupItem,  DropdownToggle, DropdownMenu, UncontrolledDropdown
-} from "reactstrap";
+import { Card, CardBody, Col, Form, FormGroup,Button, Modal, ModalBody, ModalFooter, ModalHeader, CustomInput, Label} from "reactstrap";
 
 import { Form as FinalForm, Field } from 'react-final-form'
-
-import BootstrapTable from "react-bootstrap-table-next";
-import ToolkitProvider from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
-
-import { MinusCircle, PlusCircle, Edit2, HelpCircle, Trash } from "react-feather";
 import Select from "react-select";
 
-import Info_Bullet2 from "./InfoBullet/index";
+import InfoBullet2 from "./InfoBullet/index";
 
 const Condition = ({ when, is, children }) => (
   <Field name={when} subscription={{ value: true }}>
@@ -39,7 +30,7 @@ const Info_ClonedProduct = [
     ];
 
 
-const CloneProduct_Choice = () => (
+const CloneProductChoice = () => (
 
  <Form className="mb-4 "> 
 	<FormGroup row>
@@ -56,8 +47,7 @@ const CloneProduct_Choice = () => (
 						type="select"
 						component="input"
 						id="PaymentType_Holiday"
-						className="mb-2"
-						className="react-select-container"
+						className="mb-2 react-select-container"
 						classNamePrefix="react-select"
 
 					>
@@ -69,14 +59,14 @@ const CloneProduct_Choice = () => (
 		   )}
 		</Field>
 	  </Col>	 
-	  <Info_Bullet2 
+	  <InfoBullet2 
 		InfoDesc = {Info_ClonedProduct}
 		header = "Select the product you which to clone."  
 	   />
 	</FormGroup>
  </Form>
 );
-class CloneProduct_Product extends React.Component {
+class CloneProductProduct extends React.Component {
  constructor(props) {
     super(props)
     this.state= {
@@ -89,11 +79,7 @@ class CloneProduct_Product extends React.Component {
       formattedValue: formattedValue // Formatted String, ex: "11/19/2016"
     })
   }
-  componentDidUpdate() {
-    // Access ISO String and formatted values from the DOM.
-    var hiddenInputElement = document.getElementById("example-datepicker");
-    
-  }
+
   render() {
     return (
 			 <Form className="mb-4 "> 			
@@ -120,10 +106,10 @@ const CloneProduct = () => (
 
 	  <Card>
 		<CardBody>
-		  <CloneProduct_Choice/>
+		  <CloneProductChoice/>
 			  <Condition when="CloneProduct_Choice_Field" is="Yes" >
 				<div>
-					<CloneProduct_Product/>
+					<CloneProductProduct/>
 				</div>
 			  </Condition>	
 		</CardBody>

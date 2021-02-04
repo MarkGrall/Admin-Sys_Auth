@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import {Button,ButtonGroup, Card, CardBody, CardHeader, CardTitle, Container, Tooltip } from "reactstrap";
+import {Button,ButtonGroup, Card, CardBody, Container, Tooltip } from "reactstrap";
 
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-import { MinusCircle, PlusCircle, Edit2 } from "react-feather";
+import { MinusCircle, PlusCircle } from "react-feather";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleUp, faArrowCircleDown } from "@fortawesome/free-solid-svg-icons";

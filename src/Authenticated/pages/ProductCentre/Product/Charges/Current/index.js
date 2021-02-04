@@ -1,7 +1,5 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,
-Nav, NavItem, NavLink,TabContent,TabPane
- } from "reactstrap";
+import { Container } from "reactstrap";
 
 
 import FixedPolicyCharge from "../Fixed Policy Charge/Current/index";

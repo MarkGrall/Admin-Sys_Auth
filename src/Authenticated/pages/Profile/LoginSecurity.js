@@ -1,16 +1,13 @@
 import React from "react";
-import { Button,Card,CardBody,CardHeader,CardTitle, Container,Form, FormGroup,Label, Input, Row, Col, Nav, NavItem, NavLink,TabContent,TabPane,Table } from "reactstrap";
+import { Button,Card,CardBody, Container,Form, FormGroup,Label, Input, Row, Col, } from "reactstrap";
 import {
   HelpCircle,
   PlusCircle
 } from "react-feather";
 import {
-  Collapse,
-  Navbar,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
   ListGroup,
   ListGroupItem,
 
@@ -18,7 +15,6 @@ import {
 
 const NavbarDropdown = ({
   children,
-  showBadge,
   header,
   icon: Icon
 }) => (
@@ -48,7 +44,7 @@ const NavbarDropdownItem = ({ icon, title, description,  spacing }) => (
   </ListGroupItem>
 );
 
-const Info_Bullet = ( {InfoDesc, header}) => (
+const InfoBullet = ( {InfoDesc, header}) => (
 <Col sm={1}>
 	<NavbarDropdown
 		header={header}
@@ -92,31 +88,6 @@ const Info_CoverLevel = [
 ];
 
 
-const ConfirmPassword = () => (
-<Card>
-<CardBody>
- <h3 className="h3 mb-3 ">Confirm Password</h3>
- <Form id="ConfirmPassword">
-	<FormGroup row>
-	  <Label sm={2} className="text-sm-Left">
-		Confirm your password
-	  </Label>
-	  <Col sm={3}>
-		<Input name="ConfirmPassword" placeholder="Password" id="ConfirmPassword"  required />
-	  </Col>
-	  <Info_Bullet className=" m-0 "
-		InfoDesc = {Info_CoverLevel}
-		header = "How much life cover would you like?"  
-	  />	  
-	<Button  color="primary" className=" m-0 ">
-	    Confirm Password 
-    </Button>
-	</FormGroup>
- </Form>
- </CardBody>
-</Card>
-);
-
 const ResetPassword = () => (
 <Card>
 <CardBody>
@@ -129,7 +100,7 @@ const ResetPassword = () => (
 	  <Col sm={3}>
 		<Input name="OldPassword" placeholder="Password" id="OldPassword"  required />
 	  </Col>
-	  <Info_Bullet className=" m-0 "
+	  <InfoBullet className=" m-0 "
 		InfoDesc = {Info_CoverLevel}
 		header = "How much life cover would you like?"  
 	  />	  
@@ -142,7 +113,7 @@ const ResetPassword = () => (
 	  <Col sm={3}>
 		<Input name="NewPassword" placeholder="Password" id="NewPassword"  required />
 	  </Col>
-	  <Info_Bullet className=" m-0 "
+	  <InfoBullet className=" m-0 "
 		InfoDesc = {Info_CoverLevel}
 		header = "How much life cover would you like?"  
 	  />	  
@@ -155,7 +126,7 @@ const ResetPassword = () => (
 	  <Col sm={3}>
 		<Input name="ReConfirmPassword" placeholder="Password" id="ReConfirmPassword"  required />
 	  </Col>
-	  <Info_Bullet className=" m-0 "
+	  <InfoBullet className=" m-0 "
 		InfoDesc = {Info_CoverLevel}
 		header = "How much life cover would you like?"  
 	  />	  
@@ -183,7 +154,7 @@ const ChangeEmail = () => (
 	  <Col sm={3}>
 		<Input name="NewEmail" placeholder="Email" id="NewEmail"  required />
 	  </Col>
-	  <Info_Bullet className=" m-0 "
+	  <InfoBullet className=" m-0 "
 		InfoDesc = {Info_CoverLevel}
 		header = "Change you email address for log in"  
 	  />	  
@@ -196,7 +167,7 @@ const ChangeEmail = () => (
 	  <Col sm={3}>
 		<Input name="ConfrimPasswordEmail" placeholder="Password" id="ConfrimPasswordEmail"  required />
 	  </Col>
-	  <Info_Bullet className=" m-0 "
+	  <InfoBullet className=" m-0 "
 		InfoDesc = {Info_CoverLevel}
 		header = "Confirm your password in order to change your log in email"  
 	  />	  

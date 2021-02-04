@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Row, Container, Col, Card,CardBody} from "reactstrap";
+import { Row,  Col, Card,CardBody} from "reactstrap";
 
 import { enableClassicTheme } from "../../redux/actions/themeActions";
 import { enableCorporateTheme } from "../../redux/actions/themeActions";
@@ -11,11 +11,8 @@ import screenshotThemeModern from "../../assets/img/screenshots/theme-modern.png
 import screenshotThemeCorporate from "../../assets/img/screenshots/theme-corporate.png";
 
 class Settings extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
-    const { layout,  dispatch } = this.props;
+    const {   dispatch } = this.props;
 
     return (
 		<Card>

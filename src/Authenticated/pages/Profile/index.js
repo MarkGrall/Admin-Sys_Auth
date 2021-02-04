@@ -1,9 +1,8 @@
 import React from "react";
-import { Button,Card,CardBody,CardHeader,CardTitle, Container, Input, Row, Col, Nav, NavItem, NavLink,TabContent,TabPane,Table } from "reactstrap";
+import { Button,Card,CardBody,CardTitle, Container, Input, Row, Col, Table } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import avatar from "../../assets/img/avatars/avatarMG.jpg";
 
 import avatarAL from "../../assets/img/avatars/avatarAL_4.jpg";
 import avatarMG from "../../assets/img/avatars/avatarMG.jpg";
@@ -26,36 +25,6 @@ const ContactDetailsData = [
 let ContactDetailsData_0 = ContactDetailsData[0]
 let PersonalDetailsData_0 = PersonalDetailsData[0]
 
-const UserInfo = withAuth(class ProfilePage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { user: null };
-    this.getCurrentUser = this.getCurrentUser.bind(this);
-  }
-
-  async getCurrentUser() {
-    this.props.auth.getUser()
-      .then(user => this.setState({user}));
-  }
-
-  componentDidMount() {
-    this.getCurrentUser();
-  }
-
-  render() {
-    if (!this.state.user) return null;
-    return (
-	   <span className="text-dark"> 
-			
-			{this.state.user.name}
-			{this.state.user.given_name}
-			{this.state.user.family_name}
-			{this.state.user.email}
-			family_name
-	   </span>
-    )
-  }
-});
 
 class Details extends React.Component {
   constructor(props) {
@@ -107,7 +76,6 @@ class Details extends React.Component {
 }}	
 
 const FnImage = (props) => {
-	const { email} = props;
 		switch(props.email) {
 			case 'mark.grall@gmail.com':
 			  return <img src={avatarMG} className="img-fluid rounded-circle mb-2" alt={props.email} width="128" height="128" /> ;
@@ -117,7 +85,6 @@ const FnImage = (props) => {
 			default:
 			  return <img src={avatar1} className="img-fluid rounded-circle mb-2" alt={props.email} width="128" height="128" /> ;
 		}
-	return <div/>
 }
 
 
@@ -246,7 +213,6 @@ class ContactDetails extends React.Component {
 		
 //<UserInfo />
 const PersonalDetails = (props) => {
-	const user = props.user;
 	return (
 	<Container fluid className="p-0">	
 		<Card>
@@ -307,24 +273,7 @@ const Personal = withAuth(class ProfilePage extends React.Component {
 	//		{this.state.user.family_name}
 		//	{this.state.user.email}
 
-const Personal_2 = () => (
-<Container fluid className="p-0">	
-	<PersonalDetails/>
-	
-				<Row>
-				
-				<Col>
-					<AddressDetails/>
-				</Col>
-				<Col>
-				  <ContactDetails/>
-				</Col>	
-			</Row>
-	
 
-</Container>
-        
-);
 
 
 

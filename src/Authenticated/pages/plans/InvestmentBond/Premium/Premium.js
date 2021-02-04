@@ -1,8 +1,5 @@
 import React from "react";
-import Chart from "react-apexcharts";
-import { connect } from "react-redux";
-
-import { Card, CardBody, CardHeader,Container, CardTitle,Row } from "reactstrap";
+import { Container, Row } from "reactstrap";
 
 import PremiumChart from "./PremiumChart"
 import PremiumInstruction from "./PremiumInstruction"

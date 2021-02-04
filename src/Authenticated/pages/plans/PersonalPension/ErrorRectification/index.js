@@ -1,12 +1,9 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table} from "reactstrap";
+import { CardBody,Container } from "reactstrap";
 
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
-import paginationFactory from "react-bootstrap-table2-paginator";
 
-import { MinusCircle, PlusCircle, Edit2 } from "react-feather";
-import {  Trash } from "react-feather";
 
 const tableDataSub = [
   {

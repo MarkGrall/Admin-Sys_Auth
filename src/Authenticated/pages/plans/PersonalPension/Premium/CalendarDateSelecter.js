@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import {
-  FormGroup,
-  FormText,
-  Label
+  FormGroup
 } from 'reactstrap'
 import DatePicker from "./DatePicker";
 const RDPBasic = () => {

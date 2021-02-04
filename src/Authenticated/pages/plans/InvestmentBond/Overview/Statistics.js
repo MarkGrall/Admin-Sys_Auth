@@ -1,7 +1,5 @@
 import React from "react";
-import { Col, Card, CardBody,CardHeader,CardTitle,Container, Media, Row } from "reactstrap";
-
-import { BarChart2, Activity, DollarSign, ShoppingBag } from "react-feather";
+import { Col, Card, CardBody,Container, Media, Row } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -41,7 +39,7 @@ const Statistics = () => (
             </div>
             <Media body>
               <div className="m-0">Payments Made</div>
-			  <h1 className="m-0">£82,000</h1>
+			  <h1 className="m-0">£80,000</h1>
               
             </Media>
           </Media>

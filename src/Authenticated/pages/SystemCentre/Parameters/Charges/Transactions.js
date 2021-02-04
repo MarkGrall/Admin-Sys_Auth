@@ -1,93 +1,9 @@
 import React from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table} from "reactstrap";
+import { Card, CardBody, Container } from "reactstrap";
 
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
-
-import { MinusCircle, PlusCircle, Edit2 } from "react-feather";
-import {  Trash } from "react-feather";
-
-  const tableColumns1 = [
- 
-      {
-        Header: 'Charges',
-        columns: [
-          {
-            Header: 'Charge Type',
-            accessor: 'Charge',
-            className: 'ChargeType',
-            style: {
-              fontWeight: 'bolder',
-            },
-          },
-        ],
-      },
-      {
-        Header: 'Update Date',
-        columns: [
-          {
-            Header: '01/01/2015',
-            accessor: 'Update0',
-          },
-          {
-            Header: '01/01/2016',
-            accessor: 'Update1',
-          },
-          {
-            Header: '01/01/2017',
-            accessor: 'Update2',
-          },
-          {
-            Header: '01/01/2018',
-            accessor: 'Update3',
-          }
-        ],
-      },
-    ]
-
-const tableColumns2 = [
-  {
-    dataField: "Charges",
-    text: "Charges",
-	headerStyle: (colum, colIndex) => {
-          return { width: '100px', textAlign: 'Left' };
-        },
-	columns: [
-	  {
-		dataField: 'Charge Type',
-		text: 'Charge',
-		className: 'ChargeType',
-		style: {
-		  fontWeight: 'bolder',
-		},
-	  },
-	],	
-  },
-  {
-	dataField: 'UpdateDate',
-	text: "Update Date",
-	columns: [
-			  {
-				dataField: "Update0",
-				text: "01/01/2018"
-			  },
-			  {
-				dataField: "Update1",
-				text: "01/01/2017"
-			  },
-			  {
-				dataField: "Update2",
-				text: "01/01/2016"
-			  },
-			  {
-				dataField: "Update3",
-				text: "01/01/2015"
-			  }
-			 ] 
-  }
-];
-
 
 const tableColumns = [
   {

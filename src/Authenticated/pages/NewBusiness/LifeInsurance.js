@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from 'react-dom'
+
 import {
   Button,
   Card,
@@ -11,31 +11,21 @@ import {
   CustomInput,
   Form,
   FormGroup,
-  FormText,
   Input,
-  InputGroup,
-  InputGroupAddon,
   Label,
   Row,
   Table
 } from "reactstrap";
 
-import { DatePicker  } from 'rsuite';
-
 import {
   AvForm,
-  AvField,
   AvGroup,
   AvInput,
   AvFeedback,
   AvRadioGroup,
-  AvRadio,
-  AvCheckboxGroup,
-  AvCheckbox
+  AvRadio
 } from "availity-reactstrap-validation";
 
-import {faQuestionCircle } from  "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Edit2,Check, Trash,X } from "react-feather";
 
 import Select from "react-select";
@@ -43,30 +33,17 @@ import { Form as FinalForm, Field } from 'react-final-form'
 import jQuery from "jquery";
 
 import {
-  Collapse,
-  Navbar,
-  Nav,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
   ListGroup,
   ListGroupItem,
 
 } from "reactstrap";
 
 import {
-  AlertCircle,
-  Bell,
-  BellOff,
   HelpCircle,
-  Home,
-  MessageCircle,
-  PieChart,
   PlusCircle,
-  Settings,
-  User,
-  UserPlus,
   ArrowRightCircle,
   ArrowDownCircle,
   RotateCw
@@ -141,7 +118,7 @@ const onSubmit = async values => {
   window.alert(JSON.stringify(values, 0, 2))
 }
 
-const Info_CoverType = [
+const InfoCoverType = [
   {
     type: "TA",
     title: "Level Term Assuarance",
@@ -160,7 +137,7 @@ const Info_CoverType = [
 
   }
 ];
-const Info_CoverLevel = [
+const InfoCoverLevel = [
   {
     description: "When choosing how much cover you need you may want to consider the amount of your outstanding debts and how much you would like to provide to your loved ones. This may include:"
   },
@@ -182,19 +159,19 @@ const Info_CoverLevel = [
   }
 ];
 
-const Info_CoverTerm = [
+const InfoCoverTerm = [
   {
     description: "Life insurance policies do not cover you indefinetly. When selecting the length of cover you may want to consider when your mortgage will paid off, or when your dependents will be self-sufficient."
   }
 ];
 
-const Info_CriticalIllness = [
+const InfoCriticalIllness = [
 	{
 	description: "Critical illness cover provides a lump sum if you are diagnosed with a defined critical illness such as advanced cancer, severe stroke and heart attack."
 	}
 ];
 
-const Info_CriticalIllnessAmount = [
+const InfoCriticalIllnessAmount = [
 	{
 	description: "Critical illness cover can be more expensive then life insruance cover and therefore the selected amount is usually lower."
 	}
@@ -202,7 +179,6 @@ const Info_CriticalIllnessAmount = [
 
 const NavbarDropdown = ({
   children,
-  showBadge,
   header,
   icon: Icon
 }) => (
@@ -232,7 +208,8 @@ const NavbarDropdownItem = ({ icon, title, description,  spacing }) => (
   </ListGroupItem>
 );
 
-const Form1_CoverType = () => (
+//value={props.input.value}
+const Form1CoverType = () => (
  <Form>
 	<FormGroup row>
 		<Label sm={4} className="text-sm-Left">
@@ -246,7 +223,6 @@ const Form1_CoverType = () => (
 					<div>
 					  <AvRadio CustomInput
 						name={props.input.name}
-						value={props.input.value}
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -257,7 +233,7 @@ const Form1_CoverType = () => (
 					  />
 					  <AvRadio CustomInput
 						name={props.input.name}
-						value={props.input.value}
+						
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -268,7 +244,6 @@ const Form1_CoverType = () => (
 					  />
 					  <AvRadio CustomInput
 						name={props.input.name}
-						value={props.input.value}
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -289,7 +264,7 @@ const Form1_CoverType = () => (
             header="What type of life insurance do you need?"
             icon={HelpCircle}
         >
-            {Info_CoverType.map((item, key) => {
+            {InfoCoverType.map((item, key) => {
               let icon = <ArrowRightCircle size={16} className="text-warning" />;
 
               if (item.type === "TA") {
@@ -318,7 +293,7 @@ const Form1_CoverType = () => (
  </Form>
 );
 
-const Info_Bullet = ( {InfoDesc, header}) => (
+const InfoBullet = ( {InfoDesc, header}) => (
 <Col sm={1}>
 	<NavbarDropdown
 		header={header}
@@ -340,7 +315,7 @@ const Info_Bullet = ( {InfoDesc, header}) => (
 
 );
 
-const Form1_CoverLevel = () => (
+const Form1CoverLevel = () => (
  <Form id="Frm1_CoverLevel">
 	<FormGroup row>
 	  <Label sm={4} className="text-sm-Left">
@@ -354,15 +329,15 @@ const Form1_CoverLevel = () => (
           </AvGroup>
 		
 	  </Col>
-	  <Info_Bullet 
-		InfoDesc = {Info_CoverLevel}
+	  <InfoBullet 
+		InfoDesc = {InfoCoverLevel}
 		header = "How much life cover would you like?"  
 	  />	  
 	</FormGroup>
  </Form>
 );
 
-const Form1_CoverTerm = () => (
+const Form1CoverTerm = () => (
  <Form>
 	<FormGroup row>
 	  <Label sm={4} className="text-sm-Left">
@@ -375,15 +350,15 @@ const Form1_CoverTerm = () => (
 			options={options}
 		/>
 	  </Col>
-	  <Info_Bullet 
-		InfoDesc = {Info_CoverTerm}
+	  <InfoBullet 
+		InfoDesc = {InfoCoverTerm}
 		header = "How long do you need cover for?"  
 	  />	 
 	</FormGroup>
  </Form>
 );
 
-const Form1_CriticalIllness_Question = () => (
+const Form1CriticalIllnessQuestion = () => (
 <Form id="Frm1_CriticalIllness_Question">
 	<FormGroup row>
 	  <Label sm={4} className="text-sm-Left">
@@ -398,7 +373,7 @@ const Form1_CriticalIllness_Question = () => (
 				<div>
 				  <CustomInput
 					name={props.input.name}
-					value={props.input.value}
+
 					onChange={props.input.onChange}
 					type="radio"
 					component="input"
@@ -409,7 +384,7 @@ const Form1_CriticalIllness_Question = () => (
 				  />
 				  <CustomInput
 					name={props.input.name}
-					value={props.input.value}
+
 					onChange={props.input.onChange}
 					type="radio"
 					component="input"
@@ -424,14 +399,14 @@ const Form1_CriticalIllness_Question = () => (
 		</div>
 		</AvRadioGroup> 
 	  </Col>	
-	  <Info_Bullet 
-		InfoDesc = {Info_CriticalIllness}
+	  <InfoBullet 
+		InfoDesc = {InfoCriticalIllness}
 		header = "Would you like critical illnes cover?"  
 	  />		  
 	</FormGroup>
 </Form>	
 );
-const Form1_CriticalIllness_Amount = () => (
+const Form1CriticalIllnessAmount = () => (
 <Form  id="Frm1_CriticalIllness_Amount">
 	<FormGroup row >
 	  <Label sm={4} className="text-sm-Left">
@@ -445,26 +420,26 @@ const Form1_CriticalIllness_Amount = () => (
           </AvGroup>
 		
 	  </Col>
-	  <Info_Bullet 
-		InfoDesc = {Info_CriticalIllnessAmount}
+	  <InfoBullet 
+		InfoDesc = {InfoCriticalIllnessAmount}
 		header = "How much critical illness cover would you like?"  
 	  />		  
 	</FormGroup>
 </Form>
 
 );
-const Form1_CriticalIllness = () => (
+const Form1CriticalIllness = () => (
 <Card>
 	<CardBody>
 		<FinalForm onSubmit={onSubmit} >
 		  {({ handleSubmit, form,  CustomInput, values }) => (
 			<form onSubmit={handleSubmit}>
 
-			  <Form1_CriticalIllness_Question/>
+			  <Form1CriticalIllnessQuestion/>
 			  
 			  <Condition when="CriticalIllness" is="Yes" >
 				<div>
-					<Form1_CriticalIllness_Amount/>
+					<Form1CriticalIllnessAmount/>
 				</div>
 			  </Condition>
 			</form>
@@ -482,12 +457,12 @@ const Form1 = () => (
 		  {({ handleSubmit, form,  CustomInput, values }) => (
 			<form onSubmit={handleSubmit}>
 
-			  <Form1_CoverType/>
-			  <Form1_CoverLevel/>
+			  <Form1CoverType/>
+			  <Form1CoverLevel/>
 			  
 			  <Condition when="LifeInsurance" is="TA" >
 				<div>
-					<Form1_CoverTerm/>
+					<Form1CoverTerm/>
 				</div>
 			  </Condition>
 			  
@@ -500,7 +475,7 @@ const Form1 = () => (
 );
 
 
-const Form2_Partner1 = () => (
+const Form2Partner1 = () => (
 <Card>
 	<CardBody>
 		
@@ -520,7 +495,7 @@ const Form2_Partner1 = () => (
 					<div>
 					  <CustomInput
 						name={props.input.name}
-						value={props.input.value}
+					
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -531,7 +506,7 @@ const Form2_Partner1 = () => (
 					  />
 					  <CustomInput
 						name={props.input.name}
-						value={props.input.value}
+				
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -653,7 +628,7 @@ const Form2_Partner1 = () => (
 
 );
 
-const Form2_Partner2 = () => (
+const Form2Partner2 = () => (
 <Card> 
 	<CardBody>
       <Form>
@@ -771,11 +746,11 @@ const Form2 = () => (
 		<FinalForm onSubmit={onSubmit} >
 		  {({ handleSubmit, form,  CustomInput, values }) => (
 			<form onSubmit={handleSubmit}>
-			  <Form2_Partner1/>	
+			  <Form2Partner1/>	
 			  
 			  <Condition when="PartnerCover" is="Partner 1 - Myself and my partner" >
 				<div>
-					<Form2_Partner2/>
+					<Form2Partner2/>
 				</div>
 			  </Condition>
 			</form>
@@ -787,7 +762,7 @@ const Form2 = () => (
 
 );
 
-const Form3_InitialQoute = () => (
+const Form3InitialQoute = () => (
   <Card>
   <CardBody>
     <CardHeader>
@@ -829,7 +804,7 @@ const Form3_InitialQoute = () => (
   </Card>
 );
 
-const Form3_PreviousQoute = () => (
+const Form3PreviousQoute = () => (
   <Card>
   <CardBody>
     <CardHeader>
@@ -876,60 +851,29 @@ const Form3_PreviousQoute = () => (
 const Form3 = () => (
 <Card> 
 	<CardBody>
-		<Form3_InitialQoute/>
-		<Form3_PreviousQoute/>
+		<Form3InitialQoute/>
+		<Form3PreviousQoute/>
 	</CardBody>
 </Card> 	  
 
 );
 
 
-const Form5 = () => (
-  <Card>
-    <CardBody>
-      <Form>
-        <FormGroup row>
-          <Label sm={4} className="text-sm-Left">
-            Your email address:	
-          </Label>
-		  <Col sm={3}>
-			<Input type="Email" name="Email" placeholder="" />
-          </Col>
-        </FormGroup>
-        
-		<FormGroup row>
-          <Label sm={4} className="text-sm-Left">
-            Your phone number:	
-          </Label>
-		  <Col sm={3}>
-			<Input type="PhoneNumber" name="PhoneNumber" placeholder="" />
-          </Col>
-        </FormGroup>
-		
-        <FormGroup row>
-          <Label sm={4} className="text-sm-Left">
-            Your postcode:	
-          </Label>
-		  <Col sm={3}>
-			<Input type="PostCode" name="PostCode" placeholder="" />
-          </Col>
-        </FormGroup>
-      </Form>
-	  
-    </CardBody>
-  </Card>
-);
 
 
 
+var Ret
 function ValidateForm(stepNumber)
 {
 	switch (stepNumber){
 	case 0:
-		var Ret =ValidateForm1();
+		Ret =ValidateForm1();
 		break;
 	case 1:
-		var Ret =ValidateForm2();
+		Ret =ValidateForm2();
+		break;
+	default:
+		Ret = ValidateForm2();
 		break;
 	}
 	return Ret
@@ -954,7 +898,7 @@ function ValidateForm1()
 	var Ret1 = ValidateNumbers(x)
 
 //CI Amount	
-	if(document.getElementById("Frm1_CriticalIllness_Question").elements["CriticalIllness"].value=="Yes"){
+	if(document.getElementById("Frm1_CriticalIllness_Question").elements["CriticalIllness"].value==="Yes"){
 		y=document.getElementById("Frm1_CriticalIllness_Amount").elements["CoverLevel_CI"]
 		var Ret2 = ValidateNumbers(y)
 	}else{
@@ -962,7 +906,7 @@ function ValidateForm1()
 	}
 
 //Retrun false if any one validation is false	
-	if ( (Ret1 == false) || (Ret2 == false) )
+	if ((Ret1 === false) || (Ret2 === false) )
 	{
 		//button("btnSubmit").click
 		
@@ -977,7 +921,7 @@ function ValidateForm1()
 
 //Validate numbers function
 function ValidateNumbers(x) {
-	if (isNaN(x.value)  || (x.value == "") )
+	if (isNaN(x.value) || (x.value === "") )
 	{	
 		x.value = ""	
 		return false;
@@ -1066,7 +1010,7 @@ class WizardVariant extends React.Component {
 			
 			<AvForm >	         
 			  <Form1/>
-			  <Form1_CriticalIllness/>
+			  <Form1CriticalIllness/>
 			  <Button name="btnSubmit">Submit</Button>
 			</AvForm>
 			

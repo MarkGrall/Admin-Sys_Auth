@@ -1,7 +1,5 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,
-Nav, NavItem, NavLink,TabContent,TabPane
- } from "reactstrap";
+import { Nav, NavItem, NavLink,TabContent,TabPane } from "reactstrap";
 
 import classnames from "classnames";
 import ProductHeader from "./ProductHeader";
@@ -54,8 +52,6 @@ const tableData = [
 	OutOfForcePlanCount: 20,
 	FirstRCD: '01/01/2010',
 	RecentRCD: '01/01/2020',
-	FirstRCD: '01/01/2010',
-	RecentRCD: '01/01/2020',
 	RegularPremium: "No",
 	Indexation: "No",
 	MinRegularPayment : "£100",
@@ -104,7 +100,7 @@ class TabsWithTextLabel extends React.Component {
   }
 
   render() {
-    const { name, className } = this.props;
+    const { className } = this.props;
 
     return (
 	 

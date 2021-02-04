@@ -1,5 +1,4 @@
-import React, { useState, Component }  from "react";
-
+import React  from "react";
 
 import FixedPolicyCharge from "../Fixed Policy Charge/All/index";
 

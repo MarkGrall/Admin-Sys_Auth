@@ -25,7 +25,7 @@ class TabsWithTextLabel extends React.Component {
   }
 
   render() {
-    const { name, className, TabName_1,TabName_2 } = this.props;
+    const {  className, TabName_1,TabName_2 } = this.props;
 
     return (
 	 

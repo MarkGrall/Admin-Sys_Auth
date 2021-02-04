@@ -1,32 +1,15 @@
 import React from 'react';
-import { render } from 'react-dom';
 import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
   Col,
-  Container,
   CustomInput,
   Form,
   FormGroup,
-  FormText,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  Label,
-  Row
+  Label
 } from "reactstrap";
 
 import Select from "react-select";
 
 import { Form as FinalForm,Field } from 'react-final-form';
-
-import jQuery from "jquery";
-
-const $ = jQuery;
-window.jQuery = jQuery;
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -98,7 +81,7 @@ const options = [
 
 
 
-const Form1_CoverType = () => (
+const Form1CoverType = () => (
  <Form>
 	<FormGroup row>
 		<Label sm={4} className="text-sm-Left">
@@ -112,7 +95,7 @@ const Form1_CoverType = () => (
 					<div>
 					  <CustomInput
 						name={props.input.name}
-						value={props.input.value}
+
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -123,7 +106,7 @@ const Form1_CoverType = () => (
 					  />
 					  <CustomInput
 						name={props.input.name}
-						value={props.input.value}
+		
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -134,7 +117,7 @@ const Form1_CoverType = () => (
 					  />
 					  <CustomInput
 						name={props.input.name}
-						value={props.input.value}
+				
 						onChange={props.input.onChange}
 						type="radio"
 						component="input"
@@ -152,7 +135,7 @@ const Form1_CoverType = () => (
  </Form>
 );
 
-const Form1_CoverTerm = () => (
+const Form1CoverTerm = () => (
  <Form>
 	<FormGroup row>
 	  <Label sm={4} className="text-sm-Left">
@@ -169,17 +152,7 @@ const Form1_CoverTerm = () => (
  </Form>
 );
 
-const Form1_Gift = () => (
- <div>
-	<label>Is it a gift?</label>
-	<Field 
-		name="gift" 
-		component="input" 
-		type="checkbox" 
-			
-	/>
-  </div>
-);
+
 
 const App = () => (
 
@@ -187,10 +160,10 @@ const App = () => (
   {({ handleSubmit, form,  CustomInput, values }) => (
 	<form onSubmit={handleSubmit}>
 
-	  <Form1_CoverType/>
+	  <Form1CoverType/>
 	  <Condition when="LifeInsurance" is="TA" >
 		<div>
-			<Form1_CoverTerm/>
+						<Form1CoverTerm/>
 		</div>
 	  </Condition>
 	  

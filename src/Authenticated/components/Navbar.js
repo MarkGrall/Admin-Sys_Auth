@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { toggleSidebar } from "../redux/actions/sidebarActions";
 import { Link } from "react-router-dom";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import {
   Row,
   Col,
@@ -25,7 +25,6 @@ import {
   BellOff,
   Home,
   MessageCircle,
-  PieChart,
   Settings,
   User,
   UserPlus
@@ -368,7 +367,6 @@ const UserPicture = withAuth(class ProfilePage extends React.Component {
   render() {
     
 	const FnImage = (props) => {
-	const { email} = props;
 		switch(props.email) {
 			case 'mark.grall@gmail.com':
 			  return <img src={avatarMG} className="rounded-circle mr-1" alt={props.email} width="40" height="40" /> ;
@@ -378,7 +376,6 @@ const UserPicture = withAuth(class ProfilePage extends React.Component {
 			default:
 			  return <img src={avatar1} className="rounded-circle mr-1" alt={props.email} width="40" height="40" /> ;
 		}
-	return <div/>
 	}
 	
 	if (!this.state.user) return null;
@@ -391,9 +388,6 @@ const UserPicture = withAuth(class ProfilePage extends React.Component {
 
 
 const LogOut = withAuth(class Navigation extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return ( <a href="javascript:void(0)" onClick={() => this.props.auth.logout()}>Logout</a>  )
   }});

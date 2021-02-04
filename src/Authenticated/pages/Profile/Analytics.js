@@ -1,24 +1,5 @@
 import React from "react";
-import { Button,Card,CardBody,CardHeader,CardTitle, Container,Form, FormGroup,Label, Input, Row, Col, Nav, NavItem, NavLink,TabContent,TabPane,Table } from "reactstrap";
-import {
-  HelpCircle,
-  PlusCircle
-} from "react-feather";
-import {
-  Collapse,
-  Navbar,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  ListGroup,
-  ListGroupItem,
-
-} from "reactstrap";
-
-
-import ReactDOM from 'react-dom';
-
+import { Card,CardBody, Form, FormGroup,Label, Input, Col } from "reactstrap";
 import 'rsuite/lib/styles/index.less'; 
 
 import { DateRangePicker } from 'rsuite';
@@ -58,17 +39,6 @@ const ResetPassword = () => (
  </CardBody>
 </Card>
 );
-
-
-
-const Settings = () => (
-<Container fluid className="p-0">	
-		<ResetPassword/>
-
-</Container>
-        
-);
-
 
 
 export default ResetPassword;

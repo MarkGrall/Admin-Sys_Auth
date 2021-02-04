@@ -1,5 +1,5 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,Nav, NavItem, NavLink,TabContent,TabPane } from "reactstrap";
+import { Card,CardBody, Container, Nav, NavItem, NavLink,TabContent,TabPane } from "reactstrap";
 
 import TermAssuarancePlan from "./Overview/TermAssuarancePlan";
 import Statistics from "./Overview/Statistics";

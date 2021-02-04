@@ -1,10 +1,5 @@
-import React , { useState } from "react";
-import { Card,CardBody, Container, Row, Col,
-Nav, NavItem, NavLink,TabContent,TabPane, FormGroup, Form, Label, Input
- } from "reactstrap";
-
-
-
+import React  from "react";
+import { Card,CardBody, Container, Col,FormGroup, Form, Label, Input} from "reactstrap";
 
 class DataParameters extends React.Component {
 	constructor(props, context) {

@@ -1,21 +1,19 @@
-import React, {  Component , useState }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
+import React  from "react";
+import { Card, CardBody,CardHeader,CardTitle, Container, Row,
   DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
 import BootstrapTable  from "react-bootstrap-table-next";
-import ToolkitProvider , { CSVExport, Search } from "react-bootstrap-table2-toolkit";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
-import cellEditFactory from 'react-bootstrap-table2-editor';
-
-import {  MinusCircle, PlusCircle } from "react-feather";
-
-import Model_Button from "./Modal/Button/Model_Button";
-import Model_Icon from "./Modal/Icon/Model_Icon";
+import ToolkitProvider , { CSVExport } from "react-bootstrap-table2-toolkit";
+import filterFactory, { textFilter   } from 'react-bootstrap-table2-filter';
 
 
-const B_Label="Early Encashment Charge"
+import ModelButton from "./Modal/Button/Model_Button";
+import ModelIcon from "./Modal/Icon/Model_Icon";
+
+
+const ButtonLabel="Early Encashment Charge"
 let DefaultSelected = "1";
 
 const tableColumns = [
@@ -88,17 +86,12 @@ function rankFormatter(cell, row, rowIndex, formatExtraData) {
 			  cursor: "pointer",
 			 lineHeight: "normal" }}>
 
-			<Model_Icon buttonLabel={B_Label} Row={row}  / >
+			<ModelIcon buttonLabel={ButtonLabel} Row={row}  / >
 		
 		</div> 
  ); } 
 
-class Table_Spec extends React.Component {
-	constructor(props, context) {
-    super(props, context);
-	//this.state = { selected: [ DefaultSelected ] };
-	}
-  
+class TableSpec extends React.Component { 
 
 	handleOnSelect = ( row, isSelect) => {
 		this.props.parentCallback(row.TableNumber );
@@ -116,7 +109,7 @@ class Table_Spec extends React.Component {
 			<button className="btn btn-secondary mt-0 mb-1" onClick={handleClick}>
 			  Export
 			</button>
-			<Model_Button buttonLabel={B_Label} isButton={true} TableNumber={"4"} / >
+			<ModelButton buttonLabel={ButtonLabel} isButton={true} TableNumber={"4"} / >
 			</Row>
 		  </div>
 		);
@@ -158,7 +151,7 @@ class Table_Spec extends React.Component {
   };
 };
 
-class Container_Spec extends React.Component{
+class ContainerSpec extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -170,9 +163,8 @@ class Container_Spec extends React.Component{
         this.setState({data: childData})
 	this.props.parentCallback( childData );
     }
-//"Testing - Container_Spec " + {data}
+//"Testing - ContainerSpec " + {data}
     render(){
-        const {data} = this.state;
         return(
 			<Container fluid className="p-0">
 				<Card className="card-margin">
@@ -190,12 +182,12 @@ class Container_Spec extends React.Component{
 						</UncontrolledDropdown>
 					  </div>
 					   <CardTitle id="HeaderID" tag="h3" className="mb-1" >
-						  {B_Label} - Specification
+						  {ButtonLabel} - Specification
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
 					  
-					  <Table_Spec parentCallback = {this.handleCallback}/>	
+					  <TableSpec parentCallback = {this.handleCallback}/>	
 					  	
 					</CardBody>
 				</Card>
@@ -208,7 +200,7 @@ class Container_Spec extends React.Component{
 
 let nameFilter;
 
-const tableColumns_2 = [
+const tableColumns2 = [
 	  {
 		dataField: "Year",
 		text: "Year"	
@@ -241,7 +233,7 @@ const tableColumns_2 = [
 	   }
 	];
 
-const tableData_2 = [
+const tableData2 = [
 			  {
 				TableNumber:4,
 				ID: "1",
@@ -405,30 +397,30 @@ const handleClick = (TableNumber) => {
 	  nameFilter(TableNumber);
 	};
 
-class ExpandableRowsTable_2ndTable extends React.Component {
+class ExpandableRowsTable2ndTable extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
 	}
 	  
 	componentDidMount() {
-		handleClick (this.state.TableNumber_State) 
+		handleClick (this.state.TableNumberState) 
 	}
 
 	componentDidUpdate() {
-		//this.setState({TableNumber_State: this.props.TableNumber_Prop})
-		//alert( 'State is ' + this.state.TableNumber_State  +  'Prop is ' + this.props.TableNumber_Prop );
-		handleClick (this.props.TableNumber_Prop) 
+		//this.setState({TableNumberState: this.props.TableNumberProp})
+		//alert( 'State is ' + this.state.TableNumberState  +  'Prop is ' + this.props.TableNumberProp );
+		handleClick (this.props.TableNumberProp) 
 	}
-//Testing - ExpandableRowsTable_2ndTable - state   {this.state.TableNumber_State }   - Prop  {this.props.TableNumber_Prop}	
+//Testing - ExpandableRowsTable2ndTable - state   {this.state.TableNumberState }   - Prop  {this.props.TableNumberProp}	
 	render() {     
 
     return (
 	<ToolkitProvider
-        data={tableData_2}
-        columns={tableColumns_2}
+        data={tableData2}
+        columns={tableColumns2}
 		keyField="TableNumber"
 		exportCSV={ { onlyExportFiltered: true, exportAll: false } }
 		search
@@ -441,8 +433,8 @@ class ExpandableRowsTable_2ndTable extends React.Component {
                 {...props.baseProps}
                 keyField="ID"
                 bordered={false}
-				data={tableData_2}
-				columns={tableColumns_2}
+				data={tableData2}
+				columns={tableColumns2}
 				filter={ filterFactory() }
               />
           </div>
@@ -453,14 +445,14 @@ class ExpandableRowsTable_2ndTable extends React.Component {
 };
 	
 
-class Container_2ndTable extends React.Component{
+class Container2ndTable extends React.Component{
     constructor(props){
         super(props);
 		this.state = {
-				TableNumber_State: this.props.TableNumber_Prop
+				TableNumberState: this.props.TableNumberProp
 			}
     }
-	//"Testing - Container_2ndTable " + {this.props.TableNumber_Prop}	
+	//"Testing - Container2ndTable " + {this.props.TableNumberProp}	
     render(){
         return(
 			<Container fluid className="p-0">
@@ -479,11 +471,11 @@ class Container_2ndTable extends React.Component{
 						</UncontrolledDropdown>
 					  </div>
 					   <CardTitle id="HeaderID" tag="h3" className="mb-1" >
-						  {B_Label} - Table Number: {this.props.TableNumber_Prop}
+						  {ButtonLabel} - Table Number: {this.props.TableNumberProp}
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
-					  <ExpandableRowsTable_2ndTable TableNumber_Prop = {this.props.TableNumber_Prop} />	
+					  <ExpandableRowsTable2ndTable TableNumberProp = {this.props.TableNumberProp} />	
 					</CardBody>
 				</Card>
 			  </Container>
@@ -494,7 +486,7 @@ class Container_2ndTable extends React.Component{
 
 
 
-class Test_Whole extends React.Component {
+class TestWhole extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { 
@@ -505,16 +497,16 @@ class Test_Whole extends React.Component {
 	handleCallback = (childData) =>{
         this.setState({data: childData})
     }
-	//"Testing - Test_Whole " + {data}
+	//"Testing - TestWhole " + {data}
 	render() {     
 		const {data} = this.state;
 		return (
 			<Container fluid className="p-0">
 				
 				
-				<Container_Spec parentCallback = {this.handleCallback} />
+				<ContainerSpec parentCallback = {this.handleCallback} />
 				
-				<Container_2ndTable TableNumber_Prop = {data}  />
+				<Container2ndTable TableNumberProp = {data}  />
 				
 				
 			</Container>
@@ -524,4 +516,4 @@ class Test_Whole extends React.Component {
 
 
 
-export default Test_Whole;
+export default TestWhole;

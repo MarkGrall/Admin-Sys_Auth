@@ -1,24 +1,18 @@
 import React from "react";
 
 import {
-  Badge,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardImg,
-  CardTitle,
-  Col,
-  Container,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  ListGroup,
-  ListGroupItem,
-  Progress,
-  Row,
-  Table,
-  UncontrolledDropdown
+	Card,
+	CardBody,
+	CardHeader,
+	CardTitle,
+	Col,
+	Container,
+	DropdownItem,
+	DropdownMenu,
+	DropdownToggle,
+	Row,
+	Table,
+	UncontrolledDropdown
 } from "reactstrap";
 
 import { MoreHorizontal } from "react-feather";

@@ -1,15 +1,8 @@
 import React from "react";
-import { Card,CardBody, Container, Row, Col,
-Nav, NavItem, NavLink,TabContent,TabPane
- } from "reactstrap";
+import { Card,CardBody, Container, Row } from "reactstrap";
 
-
-import PersonalPensionPlan from "./Details";
 import Statistics from "./Statistics";
 import LineChart from "./LineChart";
-import Funds from "./Funds";
-
-
 
 const PersonalPension = () => (
   <Container fluid className="p-0">

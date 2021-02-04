@@ -1,25 +1,17 @@
-import React, { useState } from "react";
-import { Card, CardBody, CardHeader, CardTitle, Container , Table, Row, Col, Form, FormGroup,
-Button, Modal, ModalBody, ModalFooter, ModalHeader, CustomInput, Label,
-  ListGroup, ListGroupItem,  DropdownToggle, DropdownMenu, UncontrolledDropdown
+import React from "react";
+import { Card, CardBody, Container , Row
 } from "reactstrap";
-
-import { Form as FinalForm, Field } from 'react-final-form'
 
 import BootstrapTable from "react-bootstrap-table-next";
 import ToolkitProvider from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 
-import { MinusCircle, PlusCircle, Edit2, HelpCircle, Trash } from "react-feather";
-
-import TranDetails from "./index";
+import { MinusCircle, PlusCircle } from "react-feather";
 import ModalButton from "./NewProduct - Modal";
 
 import { Link } from "react-router-dom";
-import { withAuth } from '@okta/okta-react';
 import { withRouter } from 'react-router'
 import async from "../../../components/Async";
-const Product = async(() => import("../Product"));
 
 
 const tableData = [
@@ -59,8 +51,6 @@ const tableData = [
     PlanCount: 100,
 	InForcePlanCount: 80,
 	OutOfForcePlanCount: 20,
-	FirstRCD: '01/01/2010',
-	RecentRCD: '01/01/2020',
 	FirstRCD: '01/01/2010',
 	RecentRCD: '01/01/2020',
 	RegularPremium: "No",
@@ -314,7 +304,7 @@ const BorderedTable = () => {
 			
 //		})
 
-const ExpandableRowsTable_1 = withRouter(class RowsTable extends React.Component {
+const ExpandableRowsTable1 = withRouter(class RowsTable extends React.Component {
 
 	constructor(props, context) {
     super(props, context);

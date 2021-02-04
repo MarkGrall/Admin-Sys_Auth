@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Card, CardBody, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { CardBody, Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt} from "@fortawesome/free-solid-svg-icons";
 
-import TabsWithTextLabel_2 from "./TabsWithTextLabel_2"
+import TabsWithTextLabel2 from "./TabsWithTextLabel_2"
 
 const ModalButton = (props) => {
   const {
@@ -25,7 +25,7 @@ const ModalButton = (props) => {
         <ModalHeader toggle={toggle}>{buttonLabel}</ModalHeader>
         <ModalBody>
 			<CardBody>
-			  <TabsWithTextLabel_2 className="tab-primary" TabName_1={buttonLabel} TabName_2="Date Parameters" Row={Row}  />	
+			  <TabsWithTextLabel2 className="tab-primary" TabName_1={buttonLabel} TabName_2="Date Parameters" Row={Row}  />	
 			</CardBody>
         </ModalBody>
         <ModalFooter>	

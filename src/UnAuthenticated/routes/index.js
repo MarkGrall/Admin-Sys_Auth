@@ -1,9 +1,8 @@
 import {
-  User as UserIcon,
   Users as UsersIcon
 } from "react-feather";
 
-import {BrowserRouter as Router,Route, Redirect,Switch} from 'react-router-dom';
+//import {BrowserRouter as Router,Route, Redirect,Switch} from 'react-router-dom';
 
 // Auth
 import SignIn_Authentication from "../pages/auth/SignIn_Authentication";

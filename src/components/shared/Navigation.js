@@ -4,8 +4,6 @@ import { withAuth } from '@okta/okta-react';
 
 import AuthenticatedApp from '../../Authenticated/App-Authenticated';
 import UnauthenticatedApp from '../../UnAuthenticated/App-Unauthenticated';
-import { Route } from 'react-router-dom';
-import { SecureRoute, ImplicitCallback } from '@okta/okta-react';
 
 const Navig = withAuth(class Navigation extends React.Component {
   constructor(props) {

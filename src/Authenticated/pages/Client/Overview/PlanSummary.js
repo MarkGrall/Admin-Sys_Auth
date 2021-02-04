@@ -2,21 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import {
-  Badge,
   Button,
   Card,
   CardBody,
   CardHeader,
-  CardImg,
   CardTitle,
   Col,
   Container,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  ListGroup,
-  ListGroupItem,
-  Progress,
   Row,
   Table,
   UncontrolledDropdown

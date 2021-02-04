@@ -1,21 +1,18 @@
-import React, {  Component , useState }  from "react";
-import {Button, Card, CardBody,CardHeader,CardTitle, Col,Container, Tooltip, Row,
+import React from "react";
+import {Card, CardBody,CardHeader,CardTitle, Container,  Row,
   DropdownItem, DropdownMenu, DropdownToggle,UncontrolledDropdown
   } from "reactstrap";
 import { MoreHorizontal } from "react-feather";
 
 import BootstrapTable  from "react-bootstrap-table-next";
-import ToolkitProvider , { CSVExport, Search } from "react-bootstrap-table2-toolkit";
-import filterFactory, { textFilter , numberFilter, Comparator  } from 'react-bootstrap-table2-filter';
-import cellEditFactory from 'react-bootstrap-table2-editor';
+import ToolkitProvider  from "react-bootstrap-table2-toolkit";
 
-import {  MinusCircle, PlusCircle } from "react-feather";
 
-import Model_Button from "./Modal/Button/Model_Button";
-import Model_Icon from "./Modal/Icon/Model_Icon";
-//import Model_Button from "./Modal/Icon/Model_Icon";
+import ModelButton from "./Modal/Button/Model_Button";
+import ModelIcon from "./Modal/Icon/Model_Icon";
+//import ModelButton from "./Modal/Icon/ModelIcon";
 
-const B_Label="Corporate Tax"
+const BLabel="Corporate Tax"
 let DefaultSelected = "3";
 
 
@@ -102,14 +99,14 @@ function rankFormatter(cell, row, rowIndex, formatExtraData) {
 			  cursor: "pointer",
 			 lineHeight: "normal" }}>
 			
-			<Model_Icon buttonLabel={B_Label} Row={row}  / >
+			<ModelIcon buttonLabel={BLabel} Row={row}  / >
 			
 		
 		</div> 
  ); } 
-//<Model_Button buttonLabel={B_Label} isButton={true} TaxID={"3"} / >
+//<ModelButton buttonLabel={BLabel} isButton={true} TaxID={"3"} / >
 
-class Table_Spec extends React.Component {
+class TableSpec extends React.Component {
 	constructor(props, context) {
     super(props, context);
 	//this.state = { selected: [ DefaultSelected ] };
@@ -120,7 +117,7 @@ class Table_Spec extends React.Component {
 	}
  
 	handleOnSelect = ( row, isSelect) => {
-		this.setState({TaxID_Row: row.TaxID});
+		this.setState({TaxIDRow: row.TaxID});
 		//this.props.parentCallback(row.TaxID );
 	}
 
@@ -136,7 +133,7 @@ class Table_Spec extends React.Component {
 			<button className="btn btn-secondary mt-0 mb-1" onClick={handleClick}>
 			  Export
 			</button>
-			<Model_Button buttonLabel={B_Label} isButton={true} TaxID={"2"} / >
+			<ModelButton buttonLabel={BLabel} isButton={true} TaxID={"2"} / >
 			</Row>
 		  </div>
 		);
@@ -170,7 +167,7 @@ class Table_Spec extends React.Component {
   };
 };
 
-class Container_Spec extends React.Component{
+class ContainerSpec extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -182,7 +179,7 @@ class Container_Spec extends React.Component{
         this.setState({data: childData})
 	//this.props.parentCallback( childData );
     }
-//"Testing - Container_Spec " + {data}
+//"Testing - ContainerSpec " + {data}
     render(){
         const {data} = this.state;
         return(
@@ -202,12 +199,12 @@ class Container_Spec extends React.Component{
 						</UncontrolledDropdown>
 					  </div>
 					   <CardTitle id="HeaderID" tag="h3" className="mb-1" >
-						  {B_Label} - Specification
+						  {BLabel} - Specification
 					  </CardTitle>
 					</CardHeader>
 					<CardBody>
 					  
-					  <Table_Spec />	
+					  <TableSpec />	
 					  	
 					</CardBody>
 				</Card>
@@ -220,4 +217,4 @@ class Container_Spec extends React.Component{
 
 
 
-export default Container_Spec;
+export default ContainerSpec;

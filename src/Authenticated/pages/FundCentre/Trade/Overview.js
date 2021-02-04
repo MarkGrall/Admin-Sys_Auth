@@ -1,8 +1,5 @@
 import React from "react";
-import { Col, Card, CardBody,CardHeader,CardTitle,Container, Media, Row } from "reactstrap";
-
-
-
+import { Col, Card, CardBody,Container, Media, Row } from "reactstrap";
 
 const Statistics = () => (
  <Container fluid className="p-0">

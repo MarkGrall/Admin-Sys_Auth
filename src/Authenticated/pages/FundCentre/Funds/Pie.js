@@ -1,17 +1,13 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
 import { connect } from "react-redux";
-import { Col, Container,Form,FormGroup, Row } from "reactstrap";
+import { Col } from "reactstrap";
 import {
-  CardBody,
-  Card,
-  CardHeader,
-  CardTitle,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Table,
-  UncontrolledDropdown
+    CardBody,
+    Card,
+    CardHeader,
+    CardTitle,
+    Table
 } from "reactstrap";
 
 import { MoreHorizontal } from "react-feather";

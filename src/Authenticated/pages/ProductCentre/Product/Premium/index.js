@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, CardBody, CardHeader, CardTitle, Col, Row, Table, Container } from "reactstrap";
+import { Card, CardBody, CardHeader, CardTitle, Col, Row, Table, Container } from "reactstrap";
 
 import ModelIcon from "./Modal/ModalIcon";
 
@@ -23,7 +23,7 @@ const ProductData = [
 ]
 var ProductData_1 = ProductData[0];
 
-class Table_1 extends React.Component {
+class Table1 extends React.Component {
   	constructor(props) {
 		super(props);
 		this.state = { 
@@ -37,7 +37,6 @@ class Table_1 extends React.Component {
 	}
   
   render() {
-    const {ProdData} = this.state;
     return ( 
 	<Row>
 	  <Table size="sm" className="m-0">
@@ -111,7 +110,7 @@ class Plan extends React.Component {
 				</CardTitle>
 			</CardHeader>
 			<CardBody>
-				<Table_1 HeaderData={this.props.HeaderData} ProdData={this.state.ProdData}   />
+				<Table1 HeaderData={this.props.HeaderData} ProdData={this.state.ProdData}   />
 			</CardBody>
 		</Card>
 	</Col>
