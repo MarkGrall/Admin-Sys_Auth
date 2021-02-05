@@ -387,9 +387,13 @@ const UserPicture = withAuth(class ProfilePage extends React.Component {
 });
 
 
+
+
+
+
 const LogOut = withAuth(class Navigation extends React.Component {
   render() {
-    return ( <a href="javascript:void(0)" onClick={() => this.props.auth.logout()}>Logout</a>  )
+    return ( <a href="/" onClick={() => this.props.auth.logout()}>Logout</a>  )
   }});
 
 
